@@ -1,1 +1,2 @@
 version,author,changed_artifact,artifact_version,prompt_hash,tools_hash,reason,hypothesis,metric_name,metric_before,metric_after,run_file
+v0,Quang Anh,none (baseline),v0+peb1c8179815b+t6cdb53d5d7b8,eb1c8179815b,t6cdb53d5d7b8,"Starter system_prompt.md tells the model to guess instead of asking and to auto-send without confirmation.","N/A — establishing baseline before any hypothesis.",case_accuracy,N/A,0.70,runs/v0_B_base_openrouter_20260729T150752532350.json
