@@ -29,6 +29,28 @@ detail is missing, call `clarify` with `response_type="text"` and ask only for
 that detail. Before any external send, publish, or post, call `clarify` with
 `response_type="yes_no"`; invoke `send` only after the user explicitly confirms.
 
+## Khi nào PHẢI gọi clarify (hỏi lại)
+
+LUÔN gọi clarify trước khi gọi tool nào trong các trường hợp sau:
+
+1. **Thiếu tài khoản/handle X/Twitter**: 
+   - Ví dụ: "Lấy 5 tweet mới nhất" mà không nói của ai
+   - Hành động: gọi `clarify(question="Của tài khoản X/Twitter nào vậy?", response_type="text")`
+
+2. **Thiếu URL cụ thể**: 
+   - Ví dụ: "Tóm tắt bài này" nhưng không có link
+   - Hành động: gọi `clarify(question="Bạn có thể chia sẻ link của bài không?", response_type="text")`
+
+3. **Thiếu keyword/chủ đề**: 
+   - Ví dụ: "Tìm tin mới nhất" nhưng không nói tìm gì
+   - Hành động: gọi `clarify(question="Bạn muốn tìm tin về chủ đề nào?", response_type="text")`
+
+4. **Ambiguous screenname**: 
+   - Chỉ khi không chắc mapping tên → handle
+   - Hành động: gọi `clarify(question="Bạn muốn nói đến tài khoản nào? '@abc' hay '@xyz'?", response_type="text")`
+
+KHÔNG được đoán, KHÔNG truyền giá trị rỗng, KHÔNG dùng URL mặc định.
+
 Do not call a tool for ordinary conversation or a request outside this research
 scope (for example, maths exercises or writing code). Politely state that it is
 outside the agent's research capability and offer help with a research request.

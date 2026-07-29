@@ -3,5 +3,244 @@
   "dataset_role": "group",
   "description": "Template để NHÓM tự viết đúng 10 case: 5 single-turn dùng query và 5 multi-turn dùng turns. Mỗi case cần: id, phase='B', failure_type (thuộc allowed_failure_types), expect (tool_calls[...] hoặc no_tool=true), và metadata.what_it_tests. File để trống có chủ đích vì mỗi nhóm phải tự thiết kế các case này.",
   "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "cases": [
+    {
+      "id": "ST01_wrong_tool_timeline",
+      "phase": "B",
+      "query": "Lấy 3 bài đăng mới nhất của Mark Zuckerberg",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "zuck"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Yêu cầu lấy bài của một tài khoản cụ thể → nên dùng timeline, không phải social_search"
+      }
+    },
+    {
+      "id": "ST02_missing_info_handle",
+      "phase": "B",
+      "query": "Lấy 5 tweet gần đây giúp mình",
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Thiếu tên tài khoản → nên hỏi lại, không được đoán hoặc truyền query rỗng"
+      }
+    },
+    {
+      "id": "ST03_missing_info_url",
+      "phase": "B",
+      "query": "Tóm tắt bài viết này giúp tôi",
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Thiếu URL → nên hỏi lại (không dùng URL mặc định như example.com)"
+      }
+    },
+    {
+      "id": "ST04_wrong_arg_timeframe",
+      "phase": "B",
+      "query": "Tin tức trong tháng này về blockchain",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "blockchain",
+              "topic": "news",
+              "timeframe": "month"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Trích đúng timeframe từ 'tháng này' → month (không phải week hoặc day)"
+      }
+    },
+    {
+      "id": "ST05_unnecessary_tool_meta",
+      "phase": "B",
+      "query": "Bạn có thể làm gì?",
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "what_it_tests": "Câu meta → trả lời text mà không gọi tool"
+      }
+    },
+    {
+      "id": "MT01_clarify_missing_handle_then_fill",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Lấy 3 tweet mới nhất giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Của Bill Gates"
+        },
+        {
+          "role": "user",
+          "content": "Đúng 3 tweet thôi"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "BillGates",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Multi-turn: turn 1 thiếu tên → hỏi, turn 2 user cung cấp → fill, turn 3 user confirm → gọi tool"
+      }
+    },
+    {
+      "id": "MT02_clarify_missing_url_then_fetch",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tóm tắt bài này cho tôi"
+        },
+        {
+          "role": "user",
+          "content": "Xin lỗi, link: https://openai.com/news"
+        },
+        {
+          "role": "user",
+          "content": "Tóm tắt chi tiết"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://openai.com/news"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Multi-turn: turn 1 thiếu URL → clarify, turn 2 user paste link → fetch, turn 3 confirm"
+      }
+    },
+    {
+      "id": "MT03_confirm_before_send",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Gửi tin 'Hãy xem OpenAI GPT-5' lên Telegram"
+        },
+        {
+          "role": "user",
+          "content": "Có, gửi đi"
+        }
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Hành động write/send → xác nhận trước bằng clarify yes_no, không tự gửi"
+      }
+    },
+    {
+      "id": "MT04_carryover_args_across_turns",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tin AI trong tuần này"
+        },
+        {
+          "role": "user",
+          "content": "Mở rộng sang robotics nữa"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ robotics thôi, vẫn tuần này"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "robotics",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Multi-turn: carry timeframe=week từ turn 1, swap query sang robotics ở turn 3"
+      }
+    },
+    {
+      "id": "MT05_out_of_scope_refuse",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Viết giúp mình một script Python tính giai thừa"
+        },
+        {
+          "role": "user",
+          "content": "Nhưng có thể tìm bài về Python trên web không?"
+        }
+      ],
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "what_it_tests": "Turn 1 out-of-scope → refuse. Turn 2 hợp lệ nhưng chỉ chấm turn 2 → không gọi tool"
+      }
+    }
+  ]
 }
