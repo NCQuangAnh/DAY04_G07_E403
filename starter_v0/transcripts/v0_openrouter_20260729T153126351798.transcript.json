@@ -1,0 +1,28 @@
+{
+  "transcript_id": "v0_openrouter_20260729T153126351798",
+  "version": "v0",
+  "artifact_version": "v0+peb1c8179815b+t6cdb53d5d7b8",
+  "prompt_hash": "eb1c8179815bd79d34de7d326420bb99b3072e6e8ae96464c02d4411f905fc68",
+  "tools_hash": "6cdb53d5d7b8de80d60b298b1357f462cedbedfae261d5ba60b08ccc401687c5",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "D:\\New folder (2)\\DAY04_G07_E403\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\New folder (2)\\DAY04_G07_E403\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T15:31:26",
+  "updated_at": "2026-07-29T15:31:43",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T15:31:26",
+      "user": "Tin tức AI hôm nay có gì nổi bật?",
+      "status": "provider_error",
+      "assistant_text": null,
+      "rounds": [],
+      "tool_events": [],
+      "error": "RuntimeError: Missing API key env var: OPENROUTER_API_KEY",
+      "ended_at": "2026-07-29T15:31:43"
+    }
+  ]
+}
