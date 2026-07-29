@@ -42,8 +42,8 @@ SAMPLE_PROMPTS = [
 ]
 
 SAMPLE_PROMPTS.append("Phân tích hashtag, từ khóa và tương tác nổi bật về OpenAI trên X")
-SAMPLE_PROMPTS.append("Trích xuất nội dung chi tiết bài viết từ URL: https://example.com")
-SAMPLE_PROMPTS.append("Liệt kê sơ đồ các trang con (sitemap) của domain https://example.com")
+SAMPLE_PROMPTS.append("Trích xuất nội dung chi tiết bài viết từ URL: https://x.com")
+SAMPLE_PROMPTS.append("Liệt kê sơ đồ các trang con (sitemap) của domain https://x.com")
 
 
 st.set_page_config(
@@ -441,11 +441,7 @@ def render_sidebar() -> tuple[str, dict[str, Any]]:
             unsafe_allow_html=True,
         )
 
-        page = st.radio(
-            "Điều hướng",
-            ["Playground", "Run evidence", "Transcripts"],
-            label_visibility="collapsed",
-        )
+        page = "Playground"
         st.divider()
 
         st.caption("CẤU HÌNH PHIÊN")
@@ -455,7 +451,7 @@ def render_sidebar() -> tuple[str, dict[str, Any]]:
             format_func=lambda value: value.title(),
         )
         model = st.text_input("Model (tùy chọn)", placeholder="Dùng model mặc định")
-        version = st.text_input("Artifact version", value="v0")
+        version = "v0"
 
         with st.expander("Nâng cao"):
             history_window = st.slider("History window", 1, 12, 5)
@@ -511,7 +507,6 @@ def render_header(config: dict[str, Any], title: str, copy: str) -> None:
         <div class="hero-copy">{html.escape(copy)}</div>
         <div style="margin-top:.8rem">
             <span class="status-pill"><span class="status-dot{dot_class}"></span>{html.escape(config["provider"].title())}</span>
-            <span class="status-pill">Version&nbsp; <strong>{html.escape(config["version"])}</strong></span>
             <span class="status-pill">{len(load_tool_declarations(TOOLS_PATH))} tools</span>
         </div>
         """,
@@ -926,12 +921,7 @@ def main() -> None:
     inject_styles()
     page, config = render_sidebar()
 
-    if page == "Playground":
-        render_playground(config)
-    elif page == "Run evidence":
-        render_run_evidence(config)
-    else:
-        render_transcripts(config)
+    render_playground(config)
 
 
 if __name__ == "__main__":

@@ -1,3 +1,13 @@
+---
+name: tavily_extract
+track: core
+kind: live_api
+provider: Tavily Extract API
+requires_env: [TAVILY_API_KEY]
+inputs: [urls]
+outputs: [items]
+side_effect: false
+---
 # Tool: `tavily_extract`
 
 ## Purpose

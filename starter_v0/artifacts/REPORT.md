@@ -6,9 +6,9 @@
 
 ## Team
 
-- Team:
-- Members:
-- Provider/model:
+- Team: G07 (E403)
+- Members: Quang Anh (Lead/Prompt), Trung (Tool Builder), Minh (Eval), Tuấn (UI/Deploy), Phương (QA/Report)
+- Provider/model: openrouter / openai/gpt-4o-mini
 
 ---
 
@@ -16,15 +16,13 @@
 
 ## A1. Agent này làm được gì
 
-> 1–2 câu mô tả agent dùng để làm gì.
-
-Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc URL và tổng hợp thành digest."
+Research agent tiếng Việt: lấy bài đăng X/Twitter theo tài khoản hoặc theo từ khóa, tra cứu tin tức/web, đọc và trích xuất nội dung URL cụ thể, khám phá sitemap của 1 domain, tổng hợp kết quả thành digest, và gửi bản tin lên Telegram sau khi hỏi xác nhận. Agent luôn hỏi lại khi thiếu thông tin (tài khoản/URL/chủ đề) thay vì tự đoán, và từ chối các yêu cầu ngoài phạm vi research (toán, code...).
 
 **Link dùng thử (truy cập được trong showdown):**
 
-> Dán public URL nếu người khác cần mở từ máy riêng; localhost cũng được nếu demo trực tiếp trên máy trình chiếu. Streamlit được khuyến nghị, nhưng nhóm có thể dùng bất kỳ framework nào.
+> Chạy `streamlit run app.py` rồi `cloudflared tunnel --url http://localhost:8501`, dán URL `trycloudflare.com` sinh ra vào đây trước giờ showdown.
 >
-> URL:
+> URL: _(điền sau khi Tuấn mở tunnel)_
 
 ## A2. Tool agent có
 
@@ -32,17 +30,24 @@ Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc 
 
 | Tên tool | Làm được gì | Tool mới nhóm thêm? |
 |---|---|---|
-| clarify | hỏi lại người dùng khi thiếu thông tin | không |
-|  |  |  |
-|  |  |  |
+| clarify | hỏi lại người dùng khi thiếu thông tin / xác nhận trước hành động gửi | không |
+| timeline | lấy bài đăng gần đây của 1 tài khoản X/Twitter | không |
+| social_search | tìm bài đăng X/Twitter theo từ khóa | không |
+| social_insights | phân tích hashtag/từ khóa lặp lại/tương tác nổi bật trên X/Twitter | **có** |
+| lookup | tra cứu web / tin tức chung | không |
+| fetch | đọc nội dung 1 URL cụ thể | không |
+| tavily_extract | trích xuất nội dung chi tiết từ 1 hoặc nhiều URL | **có** |
+| site_map | khám phá sitemap/sub-link của 1 domain | **có** |
+| format | trình bày dữ liệu đã có thành digest | không |
+| send | gửi bản tin lên Telegram (cần xác nhận trước) | không (bonus có sẵn) |
 
 ## A3. Câu hỏi mẫu để thử
 
-> 3–5 câu hỏi/yêu cầu mẫu để team khác tự thử agent ngay.
-
-1.
-2.
-3.
+1. "Tweet mới nhất của Sam Altman là gì?" — gọi tool chính (`timeline`).
+2. "Tóm tắt 5 tweet mới nhất giúp mình" — thiếu tài khoản → agent hỏi lại (`clarify`).
+3. "Tìm trên web tin AI hôm nay và tìm thêm tweet về AI." — multi-tool (`lookup` + `social_search` song song).
+4. "Phân tích hashtag nổi bật về OpenAI trên X" — dùng tool mới `social_insights`.
+5. "Đăng bản tin này lên Telegram giúp mình" — boundary xác nhận trước khi gửi (`clarify` yes/no).
 
 ## A4. Kịch bản demo đã rehearse
 
@@ -50,7 +55,11 @@ Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc 
 
 | Scenario | Tool trace cần thấy | Câu chuyện cải thiện version | Fallback run/transcript |
 |---|---|---|---|
-|  |  |  |  |
+| "Tweet mới nhất của Sam Altman là gì?" | `timeline(screenname="sama", limit=1)` | Routing cơ bản, pass ở mọi version (v0→v2) | `runs/v2_B_base_openrouter_20260729T163506626873.json` case R01 |
+| "Tóm tắt 5 tweet mới nhất giúp mình" | v0: tự đoán, gọi `timeline`/`social_search` ngay. v2: gọi `clarify(response_type="text")` hỏi tài khoản nào | v0 FAIL (missing_info) → v2 PASS nhờ rule "PHẢI gọi clarify" | v0: `runs/v0_B_base_openrouter_20260729T154751126566.json` case R10 · v2: `runs/v2_B_base_openrouter_20260729T163506626873.json` case R10 |
+| "Tìm trên web tin AI hôm nay và tìm thêm tweet về AI." | Gọi song song `lookup(query="AI", topic="news", timeframe="day")` + `social_search(query="AI")`, giữ nguyên từ khóa | v0 FAIL (tự đổi query thành "AI news") → v2 PASS | `runs/v2_B_base_openrouter_20260729T163506626873.json` case R13 |
+
+**Known gap để nói thẳng với coach (minh bạch, không né):** case "Đăng bản tin này lên Telegram giúp mình" (R12) vẫn còn flaky ở v2 — đôi khi agent hỏi nội dung bản tin (`clarify text`) trước thay vì hỏi xác nhận gửi (`clarify yes_no`). Đây là hypothesis cho v3 sau khi nhận feedback từ coach.
 
 ---
 

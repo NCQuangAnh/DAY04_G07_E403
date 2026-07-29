@@ -1,3 +1,13 @@
+---
+name: site_map
+track: core
+kind: live_api
+provider: Firecrawl Map API
+requires_env: [FIRECRAWL_API_KEY]
+inputs: [url, search]
+outputs: [items]
+side_effect: false
+---
 # Tool: `site_map`
 
 ## Purpose

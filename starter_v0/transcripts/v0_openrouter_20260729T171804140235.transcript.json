@@ -1,0 +1,140 @@
+{
+  "transcript_id": "v0_openrouter_20260729T171804140235",
+  "version": "v0",
+  "artifact_version": "v0+p5dc0ba30f10a+tf9dca3f3aa72",
+  "prompt_hash": "5dc0ba30f10ae68069dcb31e27da6b0abfe6fc22b4ddfced379db6d3e0bbd84c",
+  "tools_hash": "f9dca3f3aa72592c91f7dbce2a251dc5cd4c3ce20355dd66a1bbda321b4f63b2",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "E:\\University\\VinUni\\Day4\\E403\\DAY04_G07_E403\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "E:\\University\\VinUni\\Day4\\E403\\DAY04_G07_E403\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 2,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T17:18:04",
+  "updated_at": "2026-07-29T17:19:25",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T17:18:04",
+      "user": "tôi tên là quang anh",
+      "status": "answered",
+      "assistant_text": "Chào Quang Anh! Bạn cần tôi giúp gì hôm nay?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Chào Quang Anh! Bạn cần tôi giúp gì hôm nay?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-07-29T17:18:05"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-07-29T17:18:11",
+      "user": "tôi sinh 2004",
+      "status": "answered",
+      "assistant_text": "Cảm ơn bạn đã chia sẻ! Bạn có câu hỏi hoặc yêu cầu nào mà tôi có thể giúp không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Cảm ơn bạn đã chia sẻ! Bạn có câu hỏi hoặc yêu cầu nào mà tôi có thể giúp không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-07-29T17:18:12"
+    },
+    {
+      "turn_index": 3,
+      "started_at": "2026-07-29T17:18:17",
+      "user": "hôm nay trời đẹp nhỉ",
+      "status": "answered",
+      "assistant_text": "Thật tuyệt khi nghe bạn cảm thấy như vậy! Nếu bạn có bất kỳ câu hỏi nào hoặc cần thông tin gì, hãy cho tôi biết nhé!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Thật tuyệt khi nghe bạn cảm thấy như vậy! Nếu bạn có bất kỳ câu hỏi nào hoặc cần thông tin gì, hãy cho tôi biết nhé!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-07-29T17:18:18"
+    },
+    {
+      "turn_index": 4,
+      "started_at": "2026-07-29T17:18:25",
+      "user": "tôi tên là gì",
+      "status": "answered",
+      "assistant_text": "Tôi không biết tên của bạn. Nếu bạn muốn chia sẻ, bạn có thể cho tôi biết tên của bạn!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Tôi không biết tên của bạn. Nếu bạn muốn chia sẻ, bạn có thể cho tôi biết tên của bạn!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-07-29T17:18:26"
+    },
+    {
+      "turn_index": 5,
+      "started_at": "2026-07-29T17:19:23",
+      "user": "Trích xuất nội dung chi tiết bài viết từ URL: https://x.com",
+      "status": "waiting_for_user",
+      "assistant_text": "Bạn có thể chia sẻ link cụ thể của bài viết mà bạn muốn trích xuất nội dung không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "question": "Bạn có thể chia sẻ link cụ thể của bài viết mà bạn muốn trích xuất nội dung không?",
+                "response_type": "text"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "clarify",
+              "args": {
+                "question": "Bạn có thể chia sẻ link cụ thể của bài viết mà bạn muốn trích xuất nội dung không?",
+                "response_type": "text"
+              },
+              "result": {
+                "tool": "ask_user",
+                "question": "Bạn có thể chia sẻ link cụ thể của bài viết mà bạn muốn trích xuất nội dung không?",
+                "response_type": "text",
+                "options": [],
+                "awaiting_user": true
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn có thể chia sẻ link cụ thể của bài viết mà bạn muốn trích xuất nội dung không?",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn có thể chia sẻ link cụ thể của bài viết mà bạn muốn trích xuất nội dung không?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T17:19:25"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "transcript_id": "v0_openrouter_20260729T170849466765",
+  "version": "v0",
+  "artifact_version": "v0+p5dc0ba30f10a+tf9dca3f3aa72",
+  "prompt_hash": "5dc0ba30f10ae68069dcb31e27da6b0abfe6fc22b4ddfced379db6d3e0bbd84c",
+  "tools_hash": "f9dca3f3aa72592c91f7dbce2a251dc5cd4c3ce20355dd66a1bbda321b4f63b2",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "E:\\University\\VinUni\\Day4\\E403\\DAY04_G07_E403\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "E:\\University\\VinUni\\Day4\\E403\\DAY04_G07_E403\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T17:08:49",
+  "updated_at": "2026-07-29T17:08:51",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T17:08:49",
+      "user": "cho tôi thông tin của ",
+      "status": "waiting_for_user",
+      "assistant_text": "Bạn muốn tìm thông tin về chủ đề nào hoặc tài khoản nào?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "question": "Bạn muốn tìm thông tin về chủ đề nào hoặc tài khoản nào?",
+                "response_type": "text"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "clarify",
+              "args": {
+                "question": "Bạn muốn tìm thông tin về chủ đề nào hoặc tài khoản nào?",
+                "response_type": "text"
+              },
+              "result": {
+                "tool": "ask_user",
+                "question": "Bạn muốn tìm thông tin về chủ đề nào hoặc tài khoản nào?",
+                "response_type": "text",
+                "options": [],
+                "awaiting_user": true
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn muốn tìm thông tin về chủ đề nào hoặc tài khoản nào?",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn muốn tìm thông tin về chủ đề nào hoặc tài khoản nào?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T17:08:51"
+    }
+  ]
+}

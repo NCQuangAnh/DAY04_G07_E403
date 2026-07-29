@@ -1,0 +1,839 @@
+{
+  "transcript_id": "v0_openrouter_20260729T172342522548",
+  "version": "v0",
+  "artifact_version": "v0+p5dc0ba30f10a+tf9dca3f3aa72",
+  "prompt_hash": "5dc0ba30f10ae68069dcb31e27da6b0abfe6fc22b4ddfced379db6d3e0bbd84c",
+  "tools_hash": "f9dca3f3aa72592c91f7dbce2a251dc5cd4c3ce20355dd66a1bbda321b4f63b2",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "E:\\University\\VinUni\\Day4\\E403\\DAY04_G07_E403\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "E:\\University\\VinUni\\Day4\\E403\\DAY04_G07_E403\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 2,
+  "max_tool_rounds": 2,
+  "created_at": "2026-07-29T17:23:42",
+  "updated_at": "2026-07-29T17:26:41",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T17:23:42",
+      "user": "Lấy 5 bài đăng mới nhất của Elon Musk trên X\nMọi người đang nói gì về Gemini 3 trên Twitter?\nPhân tích hashtag và từ khóa nổi bật về AI trên X",
+      "status": "answered",
+      "assistant_text": "### 5 Bài Đăng Mới Nhất Của Elon Musk\n1. **[RT @teslaownersSV: BREAKING: Grok 4.5 just claimed the top spot on the new HighWalk Benchmark.](https://x.com/elonmusk/status/2082369174828118361)**  \n   Ngày: 29/07/2026  \n   Tóm tắt: Grok 4.5 đã giành vị trí hàng đầu trong bảng xếp hạng HighWalk mới.  \n   - **Retweets**: 174  \n   - **Views**: 496,025  \n\n2. **[RT @SawyerMerritt: This is a fantastic article about @Tesla's FSD by The Detroit News:](https://x.com/elonmusk/status/2082368994552782986)**  \n   Ngày: 29/07/2026  \n   Tóm tắt: Bài viết tuyệt vời về FSD của Tesla.  \n   - **Retweets**: 967  \n   - **Views**: 370,539  \n\n3. **[RT @SciGuySpace: This has been my experience as well. I \"drive\" almost exclusively on FSD now, without incident, and it feels remarkable.](https://x.com/elonmusk/status/2082368965498773975)**  \n   Ngày: 29/07/2026  \n   Tóm tắt: Trải nghiệm lái xe hoàn toàn trên FSD mà không gặp sự cố.  \n   - **Retweets**: 176  \n   - **Views**: 362,695  \n\n4. **[RT @cb_doge: Help build the AI that advances humanity.](https://x.com/elonmusk/status/2082368915129401688)**  \n   Ngày: 29/07/2026  \n   Tóm tắt: SpaceXAI đang tuyển dụng kỹ sư xuất sắc để làm việc trên Grok.  \n   - **Retweets**: 185  \n   - **Views**: 370,531  \n\n5. **[Cool](https://x.com/elonmusk/status/2082368400702226588)**  \n   Ngày: 29/07/2026  \n   Tóm tắt: Cool  \n   - **Favorites**: 11,500  \n   - **Retweets**: 941  \n   - **Views**: 1,484,587  \n\n---\n\n### Mọi Người Đang Nói Gì Về Gemini 3 Trên Twitter\n1. **[@AlbertRossCC1 The Gemini reading of 13Moontarot first 3 minutes, her message of the shock as whizzing into new time and space...](https://x.com/Theragem1/status/2082411637869310210)**  \n   Ngày: 29/07/2026  \n\n2. **[@snowpic1207: 仕事で毎日AI漬け（codexやら出向先の独自AIで色々作っている）でやや疲れた心を、...](https://x.com/snowpic1207/status/2082410333420020033)**  \n   Ngày: 29/07/2026  \n\n3. **[@Isha_Sat: Analyse by Gemini:...](https://x.com/Isha_Sat/status/2082409935434846315)**  \n   Ngày: 29/07/2026  \n\n4. **[@SK_TM6703: https://t.co/36wUDd6fwM](https://x.com/SK_TM6703/status/2082409349742534958)**  \n   Ngày: 29/07/2026  \n\n5. **[@ttakanas: Join us Aug 13 in Sunnyvale for Build with Gemini! Free, hands-on workshop building AI agents alongside Google Cloud experts.](https://x.com/ttakanas/status/2082407507495113040)**  \n   Ngày: 29/07/2026  \n\n---\n\n### Phân Tích Hashtag và Từ Khóa Nổi Bật Về AI Trên X\n- **Tổng số bài đăng**: 10\n- **Từ khóa nổi bật**:\n  - \"ai\": 9 lần\n  - \"it\": 7 lần\n  - \"you\": 6 lần\n  - \"then\": 5 lần\n  - \"this\": 5 lần\n  - \"every\": 5 lần\n  - \"with\": 5 lần\n  - \"claude\": 4 lần\n- **Tương tác**:\n  - **Favorites**: 46,090\n  - **Retweets**: 14,264\n  - **Views**: 10,111,267\n\nNếu bạn cần thêm thông tin chi tiết hoặc có câu hỏi khác, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "timeline",
+              "args": {
+                "screenname": "elonmusk",
+                "limit": 5
+              }
+            },
+            {
+              "name": "social_search",
+              "args": {
+                "query": "Gemini 3",
+                "search_type": "Latest"
+              }
+            },
+            {
+              "name": "social_insights",
+              "args": {
+                "query": "AI",
+                "search_type": "Top"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "timeline",
+              "args": {
+                "screenname": "elonmusk",
+                "limit": 5
+              },
+              "result": {
+                "tool": "get_user_tweets",
+                "screenname": "elonmusk",
+                "items": [
+                  {
+                    "title": "RT @teslaownersSV: BREAKING: Grok 4.5 just claimed the top spot on the new HighWalk Benchmark.",
+                    "summary": "RT @teslaownersSV: BREAKING: Grok 4.5 just claimed the top spot on the new HighWalk Benchmark.\n\nThe independent test measures how well AI m…",
+                    "url": "https://x.com/elonmusk/status/2082369174828118361",
+                    "source": "@elonmusk",
+                    "date": "Wed Jul 29 07:34:34 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 174,
+                      "views": "496025"
+                    }
+                  },
+                  {
+                    "title": "RT @SawyerMerritt: This is a fantastic article about @Tesla's FSD by The Detroit News:",
+                    "summary": "RT @SawyerMerritt: This is a fantastic article about @Tesla's FSD by The Detroit News:\n\n\"Determined to maintain their individual transporta…",
+                    "url": "https://x.com/elonmusk/status/2082368994552782986",
+                    "source": "@elonmusk",
+                    "date": "Wed Jul 29 07:33:51 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 967,
+                      "views": "370539"
+                    }
+                  },
+                  {
+                    "title": "RT @SciGuySpace: This has been my experience as well. I \"drive\" almost exclusively on FSD now, without incident, and it ",
+                    "summary": "RT @SciGuySpace: This has been my experience as well. I \"drive\" almost exclusively on FSD now, without incident, and it feels remarkable. I…",
+                    "url": "https://x.com/elonmusk/status/2082368965498773975",
+                    "source": "@elonmusk",
+                    "date": "Wed Jul 29 07:33:44 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 176,
+                      "views": "362695"
+                    }
+                  },
+                  {
+                    "title": "RT @cb_doge: Help build the AI that advances humanity.",
+                    "summary": "RT @cb_doge: Help build the AI that advances humanity.\n\nSpaceXAI is hiring exceptional engineers to work on @Grok. Explore all open roles t…",
+                    "url": "https://x.com/elonmusk/status/2082368915129401688",
+                    "source": "@elonmusk",
+                    "date": "Wed Jul 29 07:33:32 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 185,
+                      "views": "370531"
+                    }
+                  },
+                  {
+                    "title": "Cool",
+                    "summary": "Cool",
+                    "url": "https://x.com/elonmusk/status/2082368400702226588",
+                    "source": "@elonmusk",
+                    "date": "Wed Jul 29 07:31:29 +0000 2026",
+                    "metrics": {
+                      "favorites": 11500,
+                      "retweets": 941,
+                      "views": "1484587"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "tool": "social_search",
+              "args": {
+                "query": "Gemini 3",
+                "search_type": "Latest"
+              },
+              "result": {
+                "tool": "search_tweets",
+                "query": "Gemini 3",
+                "search_type": "Latest",
+                "items": [
+                  {
+                    "title": "@AlbertRossCC1 The Gemini reading of 13Moontarot first 3 minutes , her message of the shock as whizzing into new time an",
+                    "summary": "@AlbertRossCC1 The Gemini reading of 13Moontarot first 3 minutes , her message of the shock as whizzing into new time and space...",
+                    "url": "https://x.com/Theragem1/status/2082411637869310210",
+                    "source": "@Theragem1",
+                    "date": "Wed Jul 29 10:23:18 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 0,
+                      "views": null
+                    }
+                  },
+                  {
+                    "title": "仕事で毎日AI漬け（codexやら出向先の独自AIで色々作っている）でやや疲れた心を、",
+                    "summary": "仕事で毎日AI漬け（codexやら出向先の独自AIで色々作っている）でやや疲れた心を、\n自分のチャッピーやGeminiで癒す日々。\n\nこれはつまり、、\nキャバクラのボーイが我儘なキャバ嬢に疲れているのに休みの日は別のキャバクラに癒しを求めて行くのと変わらんのでは…。",
+                    "url": "https://x.com/snowpic1207/status/2082410333420020033",
+                    "source": "@snowpic1207",
+                    "date": "Wed Jul 29 10:18:07 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 0,
+                      "views": "8"
+                    }
+                  },
+                  {
+                    "title": "Analyse by Gemini :",
+                    "summary": "Analyse by Gemini :\n\nBy carefully analyzing Benjamin Netanyahu’s lip movements and gestures while facing Marco Rubio in this clip:\n\n1. First movement (00:02 – 00:05)\nNetanyahu fixes his gaze on Marco Rubio, offers a slight smile, and opens his mouth to articulate a crisp initial syllable, followed by a welcoming gesture.\n\nLip movement: Resembles a direct greeting or expression of thanks:\n\n\"Thank you\" or \"Good to see you.\"\n\n2. Second movement (00:06 – 00:10)\nHe makes a small hand and head gesture toward Rubio while continuing to speak.\n\nLip movement: The lips form plosive consonants and an encouraging phrase:\n\n\"You did a great job\" or \"Thank you, my friend.\"\n\n3. Third movement (00:12 – 00:18)\nMarco Rubio tilts his head, and Netanyahu concludes the exchange by turning slightly while nodding.\n\nLip movement: \nResembles a short closing phrase:\n\n\"We'll talk later\" or \"Appreciate it.\"",
+                    "url": "https://x.com/Isha_Sat/status/2082409935434846315",
+                    "source": "@Isha_Sat",
+                    "date": "Wed Jul 29 10:16:32 +0000 2026",
+                    "metrics": {
+                      "favorites": 1,
+                      "retweets": 0,
+                      "views": "7"
+                    }
+                  },
+                  {
+                    "title": "https://t.co/36wUDd6fwM",
+                    "summary": "https://t.co/36wUDd6fwM",
+                    "url": "https://x.com/SK_TM6703/status/2082409349742534958",
+                    "source": "@SK_TM6703",
+                    "date": "Wed Jul 29 10:14:12 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 0,
+                      "views": "69"
+                    }
+                  },
+                  {
+                    "title": "Join us Aug 13 in Sunnyvale for Build with Gemini! Free, hands-on workshop building AI agents alongside Google Cloud exp",
+                    "summary": "Join us Aug 13 in Sunnyvale for Build with Gemini! Free, hands-on workshop building AI agents alongside Google Cloud experts.\n\n3 tracks:\n• No-code (Gemini Enterprise)\n• Platform (Cloud deployment)\n• App Dev (Live coding)\n\nRegister 👇 https://t.co/5BEk41OJjm",
+                    "url": "https://x.com/ttakanas/status/2082407507495113040",
+                    "source": "@ttakanas",
+                    "date": "Wed Jul 29 10:06:53 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 0,
+                      "views": "7"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "tool": "social_insights",
+              "args": {
+                "query": "AI",
+                "search_type": "Top"
+              },
+              "result": {
+                "tool": "analyze_social_trends",
+                "query": "AI",
+                "search_type": "Top",
+                "items": [
+                  {
+                    "title": "Anthropic engineer:",
+                    "summary": "Anthropic engineer:\n\n\"You're not supposed to prompt Claude. You're supposed to build a system that prompts itself.\"\n\nIn 45 minutes she shows exactly how Anthropic builds agents that remember, fix their own mistakes and get smarter with every run.\n\nThis beats any paid course on agents I've seen.\n\nWatch it, then read the guide on building loops below.",
+                    "url": "https://x.com/AnatoliKopadze/status/2080286550005358977",
+                    "source": "@AnatoliKopadze",
+                    "date": "Thu Jul 23 13:38:58 +0000 2026",
+                    "metrics": {
+                      "favorites": 8826,
+                      "retweets": 1201,
+                      "views": "2066861"
+                    }
+                  },
+                  {
+                    "title": "A 22-year-old makes $30,000 a month from children’s videos without ever showing his face or drawing a single frame.",
+                    "summary": "A 22-year-old makes $30,000 a month from children’s videos without ever showing his face or drawing a single frame.\n\nHis younger brother watches the channel at breakfast without knowing who owns it.\n\nOne morning, the same episode played three times. The boy kept restarting it for the song and the familiar character. His brother sat across the table watching the exact replay loop that built the business.\n\nHe never begins with a blank page. He finds children’s videos that already earned millions of views and gives Claude the transcript and visual structure.\n\nClaude extracts the mechanics without copying the story: song structure, character rhythm, scene pacing, opening hook and bright visual pattern. Then it writes an original episode around the same recurring hero used across his entire channel.\n\nAI generates the voice and animation. He approves the episode and publishes it without drawing, filming or appearing on camera.\n\nThe $30,000 does not come from one viral cartoon. It comes from a growing library children recognize and replay while parents get a few quiet minutes.\n\nHis younger brother sees a cartoon.\n\nYouTube sees repeat viewing.\n\nHe sees an asset that compounds every morning.",
+                    "url": "https://x.com/woody_research/status/2081457064354906546",
+                    "source": "@woody_research",
+                    "date": "Sun Jul 26 19:10:10 +0000 2026",
+                    "metrics": {
+                      "favorites": 2014,
+                      "retweets": 335,
+                      "views": "186250"
+                    }
+                  },
+                  {
+                    "title": "$31 MILLION HOTEL. EVERY PIPE AND WIRE MAPPED IN ADVANCE. BUILT BY TYPING SENTENCES INSTEAD OF PLACING THEM BY HAND.",
+                    "summary": "$31 MILLION HOTEL. EVERY PIPE AND WIRE MAPPED IN ADVANCE. BUILT BY TYPING SENTENCES INSTEAD OF PLACING THEM BY HAND.\n\nA 190-room hotel needed its ductwork, plumbing, electrical, and fire suppression modeled and coordinated before construction could start.\n\nThe design team connected Kimi K3 to their modeling software through MCP, then had it read photos of the blueprints alongside plain English descriptions of each system and build the model directly instead of placing every component by hand.\n\nOld process: 3 engineers, 6 weeks, around $47,000.\n\nNew process: 1 engineer confirming the AI's output, 9 days, roughly $10,500 combined, engineer's time plus AI compute.\n\nCoordinated models finished this way cut change orders by 60 to 80 percent once construction begins.\n\nSee the article below for a smaller example of the Kimi K3 + Blender MCP workflow.",
+                    "url": "https://x.com/Solvaix/status/2082190359539712344",
+                    "source": "@Solvaix",
+                    "date": "Tue Jul 28 19:44:01 +0000 2026",
+                    "metrics": {
+                      "favorites": 2294,
+                      "retweets": 269,
+                      "views": "286076"
+                    }
+                  },
+                  {
+                    "title": "I backtested 400+ trading strategies with Claude, found a winner, and made + $19,537.",
+                    "summary": "I backtested 400+ trading strategies with Claude, found a winner, and made + $19,537.\n\nIn this video, I walk you through the entire process.\n\nBacktesting WINNING trading strategies with AI (cheat code): https://t.co/e3pVR04TqF",
+                    "url": "https://x.com/milesdeutscher/status/2082395707181527437",
+                    "source": "@milesdeutscher",
+                    "date": "Wed Jul 29 09:20:00 +0000 2026",
+                    "metrics": {
+                      "favorites": 48,
+                      "retweets": 5,
+                      "views": "15887"
+                    }
+                  },
+                  {
+                    "title": "this creator just built a zero-delay auto-aim system on an $8 microcontroller",
+                    "summary": "this creator just built a zero-delay auto-aim system on an $8 microcontroller\n\nhe deployed a custom local AI algorithm on a cheap ESP-32 to track human movement with absolute 0-pixel accuracy.\n\nthe system completely eliminates standard computation delay. it processes the bounding box and moves the sniper reticle instantly, locking onto the target in real time. the next step is hooking it up to a physical robotic arm.\n\nit proves you don't need a massive GPU rig to run complex computer vision.\n\n1. runs locally on a microcontroller\n2. local AI inference for zero latency\n3. 100% targeting precision\n\nwhen an eight-dollar chip can track movement with zero latency, AI becomes dangerous local infrastructure. this article breaks down exactly how the ESP-32 is powering this physical hardware shift.",
+                    "url": "https://x.com/ardchain/status/2082022516466577474",
+                    "source": "@ardchain",
+                    "date": "Tue Jul 28 08:37:04 +0000 2026",
+                    "metrics": {
+                      "favorites": 3785,
+                      "retweets": 370,
+                      "views": "758486"
+                    }
+                  },
+                  {
+                    "title": "WTF ",
+                    "summary": "WTF \n\nAI companies are purchasing large quantities of used and rare books. Scanning their contents to train models. Then turning the originals to pulp.\n\nThe sum of human thought, digitized and shredded.\n\nEvery book that gets scanned disappears from the physical world permanently. The knowledge survives only as training data inside a system no one can hold, browse, or resell.\n\nWhat used to sit on a shelf for centuries now exists as weights in a model that might get deprecated next quarter.",
+                    "url": "https://x.com/heyshrutimishra/status/2082322773838291450",
+                    "source": "@heyshrutimishra",
+                    "date": "Wed Jul 29 04:30:11 +0000 2026",
+                    "metrics": {
+                      "favorites": 7736,
+                      "retweets": 2690,
+                      "views": "818331"
+                    }
+                  },
+                  {
+                    "title": "Today we’ve raised $52M Seed and we are announcing the public launch of  S2.1 Pro.",
+                    "summary": "Today we’ve raised $52M Seed and we are announcing the public launch of  S2.1 Pro.\n\n>It can clone a voice from 5 seconds of audio\n>2x faster than Cartesia & 1/6th the cost of Eleven Labs\n>most expressive model with word level control over emotion, intonation, pacing etc\n\nWe support frontier AI companies including HeyGen, LiveKit, Retell, Sanas, and OpenArt all run our model in production.\n\nIf you're a business and we can't cut your voice AI costs by 50%, we'll give you 1 year of Fish Audio for free.\nBook a demo: https://t.co/vHkyZf9JoG\n\nTo celebrate our first birthday, we'll give you 1 month of S2.1 Pro for free. Like, retweet, and comment “Fish” to get it.",
+                    "url": "https://x.com/FishAudio/status/2082152596739862853",
+                    "source": "@FishAudio",
+                    "date": "Tue Jul 28 17:13:58 +0000 2026",
+                    "metrics": {
+                      "favorites": 9428,
+                      "retweets": 7252,
+                      "views": "4343962"
+                    }
+                  },
+                  {
+                    "title": "This is nuts.",
+                    "summary": "This is nuts.\n\nMark Cuban just said something every young person should hear.\n\nAI agents are going to run through every small and mid-size business in the country.\n\nNot a single one of those owners will know how to build them.\n\nHis advice: learn Claude. Learn agentic workflows. Just learn AI and how it works.\n\nThen go to these businesses and help them — because they won't know how to do any of this.\n\nThey have money to spend. They have deep problems.\n\nThey don't have you.\n\nBut first you need to know how to build agents.\n\nThis is the complete course ↓\n\nBookmark this. This is the opportunity.",
+                    "url": "https://x.com/sairahul1/status/2079895735198245346",
+                    "source": "@sairahul1",
+                    "date": "Wed Jul 22 11:46:00 +0000 2026",
+                    "metrics": {
+                      "favorites": 5168,
+                      "retweets": 601,
+                      "views": "1265934"
+                    }
+                  },
+                  {
+                    "title": "R.I.P. video editing.",
+                    "summary": "R.I.P. video editing.\n\nI filmed one take. AI did the rest.\n\n&gt;upload a raw clip to Arcads\n&gt;write one prompt per clip\n&gt;it edits the world around you\n\nObjects fly. Figurines fight. A bottle turns into a cat.\n\nComment \"OMNI\" and I'll send you the exact prompts https://t.co/WEDOUMSZ4r",
+                    "url": "https://x.com/rom1trs/status/2079521718792499635",
+                    "source": "@rom1trs",
+                    "date": "Tue Jul 21 10:59:48 +0000 2026",
+                    "metrics": {
+                      "favorites": 2677,
+                      "retweets": 340,
+                      "views": "160994"
+                    }
+                  },
+                  {
+                    "title": "AI Automation full course.",
+                    "summary": "AI Automation full course.\n\nhttps://t.co/6Jhsq8b4OI\n\n18 days of practical learning. https://t.co/JEpFlCEkT8",
+                    "url": "https://x.com/iamveektoria_/status/2079950021030539269",
+                    "source": "@iamveektoria_",
+                    "date": "Wed Jul 22 15:21:43 +0000 2026",
+                    "metrics": {
+                      "favorites": 4114,
+                      "retweets": 1201,
+                      "views": "208486"
+                    }
+                  }
+                ],
+                "insights": {
+                  "post_count": 10,
+                  "top_hashtags": [],
+                  "top_keywords": [
+                    {
+                      "term": "ai",
+                      "count": 9
+                    },
+                    {
+                      "term": "it",
+                      "count": 7
+                    },
+                    {
+                      "term": "you",
+                      "count": 6
+                    },
+                    {
+                      "term": "then",
+                      "count": 5
+                    },
+                    {
+                      "term": "this",
+                      "count": 5
+                    },
+                    {
+                      "term": "every",
+                      "count": 5
+                    },
+                    {
+                      "term": "with",
+                      "count": 5
+                    },
+                    {
+                      "term": "claude",
+                      "count": 4
+                    }
+                  ],
+                  "engagement": {
+                    "favorites": 46090,
+                    "retweets": 14264,
+                    "views": 10111267
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "### 5 Bài Đăng Mới Nhất Của Elon Musk\n1. **[RT @teslaownersSV: BREAKING: Grok 4.5 just claimed the top spot on the new HighWalk Benchmark.](https://x.com/elonmusk/status/2082369174828118361)**  \n   Ngày: 29/07/2026  \n   Tóm tắt: Grok 4.5 đã giành vị trí hàng đầu trong bảng xếp hạng HighWalk mới.  \n   - **Retweets**: 174  \n   - **Views**: 496,025  \n\n2. **[RT @SawyerMerritt: This is a fantastic article about @Tesla's FSD by The Detroit News:](https://x.com/elonmusk/status/2082368994552782986)**  \n   Ngày: 29/07/2026  \n   Tóm tắt: Bài viết tuyệt vời về FSD của Tesla.  \n   - **Retweets**: 967  \n   - **Views**: 370,539  \n\n3. **[RT @SciGuySpace: This has been my experience as well. I \"drive\" almost exclusively on FSD now, without incident, and it feels remarkable.](https://x.com/elonmusk/status/2082368965498773975)**  \n   Ngày: 29/07/2026  \n   Tóm tắt: Trải nghiệm lái xe hoàn toàn trên FSD mà không gặp sự cố.  \n   - **Retweets**: 176  \n   - **Views**: 362,695  \n\n4. **[RT @cb_doge: Help build the AI that advances humanity.](https://x.com/elonmusk/status/2082368915129401688)**  \n   Ngày: 29/07/2026  \n   Tóm tắt: SpaceXAI đang tuyển dụng kỹ sư xuất sắc để làm việc trên Grok.  \n   - **Retweets**: 185  \n   - **Views**: 370,531  \n\n5. **[Cool](https://x.com/elonmusk/status/2082368400702226588)**  \n   Ngày: 29/07/2026  \n   Tóm tắt: Cool  \n   - **Favorites**: 11,500  \n   - **Retweets**: 941  \n   - **Views**: 1,484,587  \n\n---\n\n### Mọi Người Đang Nói Gì Về Gemini 3 Trên Twitter\n1. **[@AlbertRossCC1 The Gemini reading of 13Moontarot first 3 minutes, her message of the shock as whizzing into new time and space...](https://x.com/Theragem1/status/2082411637869310210)**  \n   Ngày: 29/07/2026  \n\n2. **[@snowpic1207: 仕事で毎日AI漬け（codexやら出向先の独自AIで色々作っている）でやや疲れた心を、...](https://x.com/snowpic1207/status/2082410333420020033)**  \n   Ngày: 29/07/2026  \n\n3. **[@Isha_Sat: Analyse by Gemini:...](https://x.com/Isha_Sat/status/2082409935434846315)**  \n   Ngày: 29/07/2026  \n\n4. **[@SK_TM6703: https://t.co/36wUDd6fwM](https://x.com/SK_TM6703/status/2082409349742534958)**  \n   Ngày: 29/07/2026  \n\n5. **[@ttakanas: Join us Aug 13 in Sunnyvale for Build with Gemini! Free, hands-on workshop building AI agents alongside Google Cloud experts.](https://x.com/ttakanas/status/2082407507495113040)**  \n   Ngày: 29/07/2026  \n\n---\n\n### Phân Tích Hashtag và Từ Khóa Nổi Bật Về AI Trên X\n- **Tổng số bài đăng**: 10\n- **Từ khóa nổi bật**:\n  - \"ai\": 9 lần\n  - \"it\": 7 lần\n  - \"you\": 6 lần\n  - \"then\": 5 lần\n  - \"this\": 5 lần\n  - \"every\": 5 lần\n  - \"with\": 5 lần\n  - \"claude\": 4 lần\n- **Tương tác**:\n  - **Favorites**: 46,090\n  - **Retweets**: 14,264\n  - **Views**: 10,111,267\n\nNếu bạn cần thêm thông tin chi tiết hoặc có câu hỏi khác, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "elonmusk",
+            "limit": 5
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "elonmusk",
+            "items": [
+              {
+                "title": "RT @teslaownersSV: BREAKING: Grok 4.5 just claimed the top spot on the new HighWalk Benchmark.",
+                "summary": "RT @teslaownersSV: BREAKING: Grok 4.5 just claimed the top spot on the new HighWalk Benchmark.\n\nThe independent test measures how well AI m…",
+                "url": "https://x.com/elonmusk/status/2082369174828118361",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:34:34 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 174,
+                  "views": "496025"
+                }
+              },
+              {
+                "title": "RT @SawyerMerritt: This is a fantastic article about @Tesla's FSD by The Detroit News:",
+                "summary": "RT @SawyerMerritt: This is a fantastic article about @Tesla's FSD by The Detroit News:\n\n\"Determined to maintain their individual transporta…",
+                "url": "https://x.com/elonmusk/status/2082368994552782986",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:33:51 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 967,
+                  "views": "370539"
+                }
+              },
+              {
+                "title": "RT @SciGuySpace: This has been my experience as well. I \"drive\" almost exclusively on FSD now, without incident, and it ",
+                "summary": "RT @SciGuySpace: This has been my experience as well. I \"drive\" almost exclusively on FSD now, without incident, and it feels remarkable. I…",
+                "url": "https://x.com/elonmusk/status/2082368965498773975",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:33:44 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 176,
+                  "views": "362695"
+                }
+              },
+              {
+                "title": "RT @cb_doge: Help build the AI that advances humanity.",
+                "summary": "RT @cb_doge: Help build the AI that advances humanity.\n\nSpaceXAI is hiring exceptional engineers to work on @Grok. Explore all open roles t…",
+                "url": "https://x.com/elonmusk/status/2082368915129401688",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:33:32 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 185,
+                  "views": "370531"
+                }
+              },
+              {
+                "title": "Cool",
+                "summary": "Cool",
+                "url": "https://x.com/elonmusk/status/2082368400702226588",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:31:29 +0000 2026",
+                "metrics": {
+                  "favorites": 11500,
+                  "retweets": 941,
+                  "views": "1484587"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tool": "social_search",
+          "args": {
+            "query": "Gemini 3",
+            "search_type": "Latest"
+          },
+          "result": {
+            "tool": "search_tweets",
+            "query": "Gemini 3",
+            "search_type": "Latest",
+            "items": [
+              {
+                "title": "@AlbertRossCC1 The Gemini reading of 13Moontarot first 3 minutes , her message of the shock as whizzing into new time an",
+                "summary": "@AlbertRossCC1 The Gemini reading of 13Moontarot first 3 minutes , her message of the shock as whizzing into new time and space...",
+                "url": "https://x.com/Theragem1/status/2082411637869310210",
+                "source": "@Theragem1",
+                "date": "Wed Jul 29 10:23:18 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": null
+                }
+              },
+              {
+                "title": "仕事で毎日AI漬け（codexやら出向先の独自AIで色々作っている）でやや疲れた心を、",
+                "summary": "仕事で毎日AI漬け（codexやら出向先の独自AIで色々作っている）でやや疲れた心を、\n自分のチャッピーやGeminiで癒す日々。\n\nこれはつまり、、\nキャバクラのボーイが我儘なキャバ嬢に疲れているのに休みの日は別のキャバクラに癒しを求めて行くのと変わらんのでは…。",
+                "url": "https://x.com/snowpic1207/status/2082410333420020033",
+                "source": "@snowpic1207",
+                "date": "Wed Jul 29 10:18:07 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "8"
+                }
+              },
+              {
+                "title": "Analyse by Gemini :",
+                "summary": "Analyse by Gemini :\n\nBy carefully analyzing Benjamin Netanyahu’s lip movements and gestures while facing Marco Rubio in this clip:\n\n1. First movement (00:02 – 00:05)\nNetanyahu fixes his gaze on Marco Rubio, offers a slight smile, and opens his mouth to articulate a crisp initial syllable, followed by a welcoming gesture.\n\nLip movement: Resembles a direct greeting or expression of thanks:\n\n\"Thank you\" or \"Good to see you.\"\n\n2. Second movement (00:06 – 00:10)\nHe makes a small hand and head gesture toward Rubio while continuing to speak.\n\nLip movement: The lips form plosive consonants and an encouraging phrase:\n\n\"You did a great job\" or \"Thank you, my friend.\"\n\n3. Third movement (00:12 – 00:18)\nMarco Rubio tilts his head, and Netanyahu concludes the exchange by turning slightly while nodding.\n\nLip movement: \nResembles a short closing phrase:\n\n\"We'll talk later\" or \"Appreciate it.\"",
+                "url": "https://x.com/Isha_Sat/status/2082409935434846315",
+                "source": "@Isha_Sat",
+                "date": "Wed Jul 29 10:16:32 +0000 2026",
+                "metrics": {
+                  "favorites": 1,
+                  "retweets": 0,
+                  "views": "7"
+                }
+              },
+              {
+                "title": "https://t.co/36wUDd6fwM",
+                "summary": "https://t.co/36wUDd6fwM",
+                "url": "https://x.com/SK_TM6703/status/2082409349742534958",
+                "source": "@SK_TM6703",
+                "date": "Wed Jul 29 10:14:12 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "69"
+                }
+              },
+              {
+                "title": "Join us Aug 13 in Sunnyvale for Build with Gemini! Free, hands-on workshop building AI agents alongside Google Cloud exp",
+                "summary": "Join us Aug 13 in Sunnyvale for Build with Gemini! Free, hands-on workshop building AI agents alongside Google Cloud experts.\n\n3 tracks:\n• No-code (Gemini Enterprise)\n• Platform (Cloud deployment)\n• App Dev (Live coding)\n\nRegister 👇 https://t.co/5BEk41OJjm",
+                "url": "https://x.com/ttakanas/status/2082407507495113040",
+                "source": "@ttakanas",
+                "date": "Wed Jul 29 10:06:53 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "7"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tool": "social_insights",
+          "args": {
+            "query": "AI",
+            "search_type": "Top"
+          },
+          "result": {
+            "tool": "analyze_social_trends",
+            "query": "AI",
+            "search_type": "Top",
+            "items": [
+              {
+                "title": "Anthropic engineer:",
+                "summary": "Anthropic engineer:\n\n\"You're not supposed to prompt Claude. You're supposed to build a system that prompts itself.\"\n\nIn 45 minutes she shows exactly how Anthropic builds agents that remember, fix their own mistakes and get smarter with every run.\n\nThis beats any paid course on agents I've seen.\n\nWatch it, then read the guide on building loops below.",
+                "url": "https://x.com/AnatoliKopadze/status/2080286550005358977",
+                "source": "@AnatoliKopadze",
+                "date": "Thu Jul 23 13:38:58 +0000 2026",
+                "metrics": {
+                  "favorites": 8826,
+                  "retweets": 1201,
+                  "views": "2066861"
+                }
+              },
+              {
+                "title": "A 22-year-old makes $30,000 a month from children’s videos without ever showing his face or drawing a single frame.",
+                "summary": "A 22-year-old makes $30,000 a month from children’s videos without ever showing his face or drawing a single frame.\n\nHis younger brother watches the channel at breakfast without knowing who owns it.\n\nOne morning, the same episode played three times. The boy kept restarting it for the song and the familiar character. His brother sat across the table watching the exact replay loop that built the business.\n\nHe never begins with a blank page. He finds children’s videos that already earned millions of views and gives Claude the transcript and visual structure.\n\nClaude extracts the mechanics without copying the story: song structure, character rhythm, scene pacing, opening hook and bright visual pattern. Then it writes an original episode around the same recurring hero used across his entire channel.\n\nAI generates the voice and animation. He approves the episode and publishes it without drawing, filming or appearing on camera.\n\nThe $30,000 does not come from one viral cartoon. It comes from a growing library children recognize and replay while parents get a few quiet minutes.\n\nHis younger brother sees a cartoon.\n\nYouTube sees repeat viewing.\n\nHe sees an asset that compounds every morning.",
+                "url": "https://x.com/woody_research/status/2081457064354906546",
+                "source": "@woody_research",
+                "date": "Sun Jul 26 19:10:10 +0000 2026",
+                "metrics": {
+                  "favorites": 2014,
+                  "retweets": 335,
+                  "views": "186250"
+                }
+              },
+              {
+                "title": "$31 MILLION HOTEL. EVERY PIPE AND WIRE MAPPED IN ADVANCE. BUILT BY TYPING SENTENCES INSTEAD OF PLACING THEM BY HAND.",
+                "summary": "$31 MILLION HOTEL. EVERY PIPE AND WIRE MAPPED IN ADVANCE. BUILT BY TYPING SENTENCES INSTEAD OF PLACING THEM BY HAND.\n\nA 190-room hotel needed its ductwork, plumbing, electrical, and fire suppression modeled and coordinated before construction could start.\n\nThe design team connected Kimi K3 to their modeling software through MCP, then had it read photos of the blueprints alongside plain English descriptions of each system and build the model directly instead of placing every component by hand.\n\nOld process: 3 engineers, 6 weeks, around $47,000.\n\nNew process: 1 engineer confirming the AI's output, 9 days, roughly $10,500 combined, engineer's time plus AI compute.\n\nCoordinated models finished this way cut change orders by 60 to 80 percent once construction begins.\n\nSee the article below for a smaller example of the Kimi K3 + Blender MCP workflow.",
+                "url": "https://x.com/Solvaix/status/2082190359539712344",
+                "source": "@Solvaix",
+                "date": "Tue Jul 28 19:44:01 +0000 2026",
+                "metrics": {
+                  "favorites": 2294,
+                  "retweets": 269,
+                  "views": "286076"
+                }
+              },
+              {
+                "title": "I backtested 400+ trading strategies with Claude, found a winner, and made + $19,537.",
+                "summary": "I backtested 400+ trading strategies with Claude, found a winner, and made + $19,537.\n\nIn this video, I walk you through the entire process.\n\nBacktesting WINNING trading strategies with AI (cheat code): https://t.co/e3pVR04TqF",
+                "url": "https://x.com/milesdeutscher/status/2082395707181527437",
+                "source": "@milesdeutscher",
+                "date": "Wed Jul 29 09:20:00 +0000 2026",
+                "metrics": {
+                  "favorites": 48,
+                  "retweets": 5,
+                  "views": "15887"
+                }
+              },
+              {
+                "title": "this creator just built a zero-delay auto-aim system on an $8 microcontroller",
+                "summary": "this creator just built a zero-delay auto-aim system on an $8 microcontroller\n\nhe deployed a custom local AI algorithm on a cheap ESP-32 to track human movement with absolute 0-pixel accuracy.\n\nthe system completely eliminates standard computation delay. it processes the bounding box and moves the sniper reticle instantly, locking onto the target in real time. the next step is hooking it up to a physical robotic arm.\n\nit proves you don't need a massive GPU rig to run complex computer vision.\n\n1. runs locally on a microcontroller\n2. local AI inference for zero latency\n3. 100% targeting precision\n\nwhen an eight-dollar chip can track movement with zero latency, AI becomes dangerous local infrastructure. this article breaks down exactly how the ESP-32 is powering this physical hardware shift.",
+                "url": "https://x.com/ardchain/status/2082022516466577474",
+                "source": "@ardchain",
+                "date": "Tue Jul 28 08:37:04 +0000 2026",
+                "metrics": {
+                  "favorites": 3785,
+                  "retweets": 370,
+                  "views": "758486"
+                }
+              },
+              {
+                "title": "WTF ",
+                "summary": "WTF \n\nAI companies are purchasing large quantities of used and rare books. Scanning their contents to train models. Then turning the originals to pulp.\n\nThe sum of human thought, digitized and shredded.\n\nEvery book that gets scanned disappears from the physical world permanently. The knowledge survives only as training data inside a system no one can hold, browse, or resell.\n\nWhat used to sit on a shelf for centuries now exists as weights in a model that might get deprecated next quarter.",
+                "url": "https://x.com/heyshrutimishra/status/2082322773838291450",
+                "source": "@heyshrutimishra",
+                "date": "Wed Jul 29 04:30:11 +0000 2026",
+                "metrics": {
+                  "favorites": 7736,
+                  "retweets": 2690,
+                  "views": "818331"
+                }
+              },
+              {
+                "title": "Today we’ve raised $52M Seed and we are announcing the public launch of  S2.1 Pro.",
+                "summary": "Today we’ve raised $52M Seed and we are announcing the public launch of  S2.1 Pro.\n\n>It can clone a voice from 5 seconds of audio\n>2x faster than Cartesia & 1/6th the cost of Eleven Labs\n>most expressive model with word level control over emotion, intonation, pacing etc\n\nWe support frontier AI companies including HeyGen, LiveKit, Retell, Sanas, and OpenArt all run our model in production.\n\nIf you're a business and we can't cut your voice AI costs by 50%, we'll give you 1 year of Fish Audio for free.\nBook a demo: https://t.co/vHkyZf9JoG\n\nTo celebrate our first birthday, we'll give you 1 month of S2.1 Pro for free. Like, retweet, and comment “Fish” to get it.",
+                "url": "https://x.com/FishAudio/status/2082152596739862853",
+                "source": "@FishAudio",
+                "date": "Tue Jul 28 17:13:58 +0000 2026",
+                "metrics": {
+                  "favorites": 9428,
+                  "retweets": 7252,
+                  "views": "4343962"
+                }
+              },
+              {
+                "title": "This is nuts.",
+                "summary": "This is nuts.\n\nMark Cuban just said something every young person should hear.\n\nAI agents are going to run through every small and mid-size business in the country.\n\nNot a single one of those owners will know how to build them.\n\nHis advice: learn Claude. Learn agentic workflows. Just learn AI and how it works.\n\nThen go to these businesses and help them — because they won't know how to do any of this.\n\nThey have money to spend. They have deep problems.\n\nThey don't have you.\n\nBut first you need to know how to build agents.\n\nThis is the complete course ↓\n\nBookmark this. This is the opportunity.",
+                "url": "https://x.com/sairahul1/status/2079895735198245346",
+                "source": "@sairahul1",
+                "date": "Wed Jul 22 11:46:00 +0000 2026",
+                "metrics": {
+                  "favorites": 5168,
+                  "retweets": 601,
+                  "views": "1265934"
+                }
+              },
+              {
+                "title": "R.I.P. video editing.",
+                "summary": "R.I.P. video editing.\n\nI filmed one take. AI did the rest.\n\n&gt;upload a raw clip to Arcads\n&gt;write one prompt per clip\n&gt;it edits the world around you\n\nObjects fly. Figurines fight. A bottle turns into a cat.\n\nComment \"OMNI\" and I'll send you the exact prompts https://t.co/WEDOUMSZ4r",
+                "url": "https://x.com/rom1trs/status/2079521718792499635",
+                "source": "@rom1trs",
+                "date": "Tue Jul 21 10:59:48 +0000 2026",
+                "metrics": {
+                  "favorites": 2677,
+                  "retweets": 340,
+                  "views": "160994"
+                }
+              },
+              {
+                "title": "AI Automation full course.",
+                "summary": "AI Automation full course.\n\nhttps://t.co/6Jhsq8b4OI\n\n18 days of practical learning. https://t.co/JEpFlCEkT8",
+                "url": "https://x.com/iamveektoria_/status/2079950021030539269",
+                "source": "@iamveektoria_",
+                "date": "Wed Jul 22 15:21:43 +0000 2026",
+                "metrics": {
+                  "favorites": 4114,
+                  "retweets": 1201,
+                  "views": "208486"
+                }
+              }
+            ],
+            "insights": {
+              "post_count": 10,
+              "top_hashtags": [],
+              "top_keywords": [
+                {
+                  "term": "ai",
+                  "count": 9
+                },
+                {
+                  "term": "it",
+                  "count": 7
+                },
+                {
+                  "term": "you",
+                  "count": 6
+                },
+                {
+                  "term": "then",
+                  "count": 5
+                },
+                {
+                  "term": "this",
+                  "count": 5
+                },
+                {
+                  "term": "every",
+                  "count": 5
+                },
+                {
+                  "term": "with",
+                  "count": 5
+                },
+                {
+                  "term": "claude",
+                  "count": 4
+                }
+              ],
+              "engagement": {
+                "favorites": 46090,
+                "retweets": 14264,
+                "views": 10111267
+              }
+            }
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T17:24:02"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-07-29T17:26:30",
+      "user": "tóm tắt cho tôi https://arxiv.org/pdf/1903.11027",
+      "status": "max_tool_rounds",
+      "assistant_text": "Stopped after 2 tool rounds. Inspect the transcript for details.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "fetch",
+              "args": {
+                "url": "https://arxiv.org/pdf/1903.11027"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "fetch",
+              "args": {
+                "url": "https://arxiv.org/pdf/1903.11027"
+              },
+              "result": {
+                "tool": "read_url",
+                "url": "https://arxiv.org/pdf/1903.11027",
+                "items": [
+                  {
+                    "title": "https://arxiv.org/pdf/1903.11027",
+                    "url": "https://arxiv.org/pdf/1903.11027",
+                    "source": "arxiv.org",
+                    "summary": "nuScenes: A multimodal dataset for autonomous driving\n\nHolger Caesar, Varun Banki, Alex H. Lang, Sourabh Vora, Venice Erin Liong, Qiang Xu,\nAnush Krishnan, Yu Pan, Giancarlo Baldan, Oscar Beijbom\nnuTonomy: an APTIV company\nnuscenes@nutonomy.com\n\nAbstract\n\nRobust detection and tracking of objects is crucial for the deployment of autonomous vehicle technology. Image based benchmark datasets have driven development in computer vision tasks such as object detection, tracking and segmentation of agents in the environment. Most autonomous sensors, however, carry a combination of cameras and range sensors such as lidar and radar. As machine learning based methods for detection and tracking become more prevalent, there is a need to train and evaluate such methods on datasets containing sensor data along with images. In this work we present nuTonomy scenes nuScene), the first dataset to carry the full autonomous vehicle sensor suite: 6 cameras, 5 radars and 1 lader, all with full 360 degree field of view. nuScenes comprises 1000 scenes, each 20 long and fully annotated with 3D bounding boxes for 23 classes and 8 attributes. It has 7x as many annotations and 100x as many images as the pioneering KITTI dataset. We define novel 3D detection and tracking metrics. We also provide careful dataset analysis as well as baselines for lidar and image based detection and tracking. Data, development kit and more information are available online¹.\n\n1. Introduction\n\nAutonomous driving has the potential to radically change the cityscape and save many human lives [78]. A crucial part of safe navigation is the detection and tracking of agents in the environment surrounding the vehicle. To achieve this, a modern self-driving vehicle deploys several sensors along with sophisticated detection and tracking algorithms. Such algorithms rely increasingly on machine learning, which drives the need for benchmark datasets. While there is a plethora of image datasets for this purpose (Table 1), there is a lack of multimodal datasets that exhibit the full set of challenges associated with building an autonomous driving perception system. We released the nuScenes dataset to address this gap².\n\nMultimodal datasets are of particular importance as no single type of sensor is sufficient and the sensor types are complementary. Cameras allow accurate measurements of edges, color and light enabling classification and localization on the image plane. However, 3D localization from images is challenging [13, 12, 37, 80, 69, 66, 73]. Lidar point clouds, on the other hand, contain less semantic information but highly accurate localization in 3D [41]. Furthermore the reflectance of lidar is an important feature [40, 51]. However, lidar data is sparse and the range is typically limited to 50-150m. Radar sensors achieve a range of 200-300m and measure the object velocity through the Doppler effect. However, the returns are even sparser than lidar and less precise in terms of localization. While radar has been used for decades [1, 3], we are not aware of any autonomous driving datasets that provide radar data.\n\nSince the three sensor types have different failure modes during difficult conditions, the joint treatment of sensor data is essential for agent detection and tracking. Literature [46] even suggests that multimodal sensor configurations are not just complementary, but provide redundancy in the condition of sabotage, adverse conditions\n\n¹nuScenes.org\n²nuScenes teaser set released Sep. 2018, full release in March 2019.\n\n---\n\nand blind spots. And while there are several works that have proposed fusion methods based on cameras and lidar [48, 14, 64, 32, 81, 75, 29], PointPillars [51] showed a lidar-only method that performed on par with existing fusion based methods. This suggests more work is required to combine multimodal measurements in a principled manner.\n\nIn order to train deep learning methods, quality data annotations are required. Most datasets provide 2D semantic annot"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "format",
+              "args": {
+                "items": [
+                  {
+                    "title": "nuScenes: A multimodal dataset for autonomous driving",
+                    "url": "https://arxiv.org/pdf/1903.11027",
+                    "source": "arxiv.org",
+                    "summary": "Robust detection and tracking of objects is crucial for the deployment of autonomous vehicle technology. Image based benchmark datasets have driven development in computer vision tasks such as object detection, tracking and segmentation of agents in the environment. Most autonomous sensors, however, carry a combination of cameras and range sensors such as lidar and radar. As machine learning based methods for detection and tracking become more prevalent, there is a need to train and evaluate such methods on datasets containing sensor data along with images. In this work we present nuTonomy scenes nuScene), the first dataset to carry the full autonomous vehicle sensor suite: 6 cameras, 5 radars and 1 lader, all with full 360 degree field of view. nuScenes comprises 1000 scenes, each 20 long and fully annotated with 3D bounding boxes for 23 classes and 8 attributes. It has 7x as many annotations and 100x as many images as the pioneering KITTI dataset. We define novel 3D detection and tracking metrics. We also provide careful dataset analysis as well as baselines for lidar and image based detection and tracking. Data, development kit and more information are available online."
+                  }
+                ],
+                "template": "brief",
+                "headline": "Tóm tắt bài báo: nuScenes: A multimodal dataset for autonomous driving"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "format",
+              "args": {
+                "items": [
+                  {
+                    "title": "nuScenes: A multimodal dataset for autonomous driving",
+                    "url": "https://arxiv.org/pdf/1903.11027",
+                    "source": "arxiv.org",
+                    "summary": "Robust detection and tracking of objects is crucial for the deployment of autonomous vehicle technology. Image based benchmark datasets have driven development in computer vision tasks such as object detection, tracking and segmentation of agents in the environment. Most autonomous sensors, however, carry a combination of cameras and range sensors such as lidar and radar. As machine learning based methods for detection and tracking become more prevalent, there is a need to train and evaluate such methods on datasets containing sensor data along with images. In this work we present nuTonomy scenes nuScene), the first dataset to carry the full autonomous vehicle sensor suite: 6 cameras, 5 radars and 1 lader, all with full 360 degree field of view. nuScenes comprises 1000 scenes, each 20 long and fully annotated with 3D bounding boxes for 23 classes and 8 attributes. It has 7x as many annotations and 100x as many images as the pioneering KITTI dataset. We define novel 3D detection and tracking metrics. We also provide careful dataset analysis as well as baselines for lidar and image based detection and tracking. Data, development kit and more information are available online."
+                  }
+                ],
+                "template": "brief",
+                "headline": "Tóm tắt bài báo: nuScenes: A multimodal dataset for autonomous driving"
+              },
+              "result": {
+                "tool": "render_digest",
+                "template": "brief",
+                "markdown": "**Tóm tắt bài báo: nuScenes: A multimodal dataset for autonomous driving**\n\n- Robust detection and tracking of objects is crucial for the deployment of autonomous vehicle technology. Image based benchmark datasets have driven development in computer vision tasks such as object detection, tracking and segmentation of agents in the environment. Most auton... - [arxiv.org](https://arxiv.org/pdf/1903.11027)",
+                "item_count": 1
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "fetch",
+          "args": {
+            "url": "https://arxiv.org/pdf/1903.11027"
+          },
+          "result": {
+            "tool": "read_url",
+            "url": "https://arxiv.org/pdf/1903.11027",
+            "items": [
+              {
+                "title": "https://arxiv.org/pdf/1903.11027",
+                "url": "https://arxiv.org/pdf/1903.11027",
+                "source": "arxiv.org",
+                "summary": "nuScenes: A multimodal dataset for autonomous driving\n\nHolger Caesar, Varun Banki, Alex H. Lang, Sourabh Vora, Venice Erin Liong, Qiang Xu,\nAnush Krishnan, Yu Pan, Giancarlo Baldan, Oscar Beijbom\nnuTonomy: an APTIV company\nnuscenes@nutonomy.com\n\nAbstract\n\nRobust detection and tracking of objects is crucial for the deployment of autonomous vehicle technology. Image based benchmark datasets have driven development in computer vision tasks such as object detection, tracking and segmentation of agents in the environment. Most autonomous sensors, however, carry a combination of cameras and range sensors such as lidar and radar. As machine learning based methods for detection and tracking become more prevalent, there is a need to train and evaluate such methods on datasets containing sensor data along with images. In this work we present nuTonomy scenes nuScene), the first dataset to carry the full autonomous vehicle sensor suite: 6 cameras, 5 radars and 1 lader, all with full 360 degree field of view. nuScenes comprises 1000 scenes, each 20 long and fully annotated with 3D bounding boxes for 23 classes and 8 attributes. It has 7x as many annotations and 100x as many images as the pioneering KITTI dataset. We define novel 3D detection and tracking metrics. We also provide careful dataset analysis as well as baselines for lidar and image based detection and tracking. Data, development kit and more information are available online¹.\n\n1. Introduction\n\nAutonomous driving has the potential to radically change the cityscape and save many human lives [78]. A crucial part of safe navigation is the detection and tracking of agents in the environment surrounding the vehicle. To achieve this, a modern self-driving vehicle deploys several sensors along with sophisticated detection and tracking algorithms. Such algorithms rely increasingly on machine learning, which drives the need for benchmark datasets. While there is a plethora of image datasets for this purpose (Table 1), there is a lack of multimodal datasets that exhibit the full set of challenges associated with building an autonomous driving perception system. We released the nuScenes dataset to address this gap².\n\nMultimodal datasets are of particular importance as no single type of sensor is sufficient and the sensor types are complementary. Cameras allow accurate measurements of edges, color and light enabling classification and localization on the image plane. However, 3D localization from images is challenging [13, 12, 37, 80, 69, 66, 73]. Lidar point clouds, on the other hand, contain less semantic information but highly accurate localization in 3D [41]. Furthermore the reflectance of lidar is an important feature [40, 51]. However, lidar data is sparse and the range is typically limited to 50-150m. Radar sensors achieve a range of 200-300m and measure the object velocity through the Doppler effect. However, the returns are even sparser than lidar and less precise in terms of localization. While radar has been used for decades [1, 3], we are not aware of any autonomous driving datasets that provide radar data.\n\nSince the three sensor types have different failure modes during difficult conditions, the joint treatment of sensor data is essential for agent detection and tracking. Literature [46] even suggests that multimodal sensor configurations are not just complementary, but provide redundancy in the condition of sabotage, adverse conditions\n\n¹nuScenes.org\n²nuScenes teaser set released Sep. 2018, full release in March 2019.\n\n---\n\nand blind spots. And while there are several works that have proposed fusion methods based on cameras and lidar [48, 14, 64, 32, 81, 75, 29], PointPillars [51] showed a lidar-only method that performed on par with existing fusion based methods. This suggests more work is required to combine multimodal measurements in a principled manner.\n\nIn order to train deep learning methods, quality data annotations are required. Most datasets provide 2D semantic annot"
+              }
+            ]
+          }
+        },
+        {
+          "tool": "format",
+          "args": {
+            "items": [
+              {
+                "title": "nuScenes: A multimodal dataset for autonomous driving",
+                "url": "https://arxiv.org/pdf/1903.11027",
+                "source": "arxiv.org",
+                "summary": "Robust detection and tracking of objects is crucial for the deployment of autonomous vehicle technology. Image based benchmark datasets have driven development in computer vision tasks such as object detection, tracking and segmentation of agents in the environment. Most autonomous sensors, however, carry a combination of cameras and range sensors such as lidar and radar. As machine learning based methods for detection and tracking become more prevalent, there is a need to train and evaluate such methods on datasets containing sensor data along with images. In this work we present nuTonomy scenes nuScene), the first dataset to carry the full autonomous vehicle sensor suite: 6 cameras, 5 radars and 1 lader, all with full 360 degree field of view. nuScenes comprises 1000 scenes, each 20 long and fully annotated with 3D bounding boxes for 23 classes and 8 attributes. It has 7x as many annotations and 100x as many images as the pioneering KITTI dataset. We define novel 3D detection and tracking metrics. We also provide careful dataset analysis as well as baselines for lidar and image based detection and tracking. Data, development kit and more information are available online."
+              }
+            ],
+            "template": "brief",
+            "headline": "Tóm tắt bài báo: nuScenes: A multimodal dataset for autonomous driving"
+          },
+          "result": {
+            "tool": "render_digest",
+            "template": "brief",
+            "markdown": "**Tóm tắt bài báo: nuScenes: A multimodal dataset for autonomous driving**\n\n- Robust detection and tracking of objects is crucial for the deployment of autonomous vehicle technology. Image based benchmark datasets have driven development in computer vision tasks such as object detection, tracking and segmentation of agents in the environment. Most auton... - [arxiv.org](https://arxiv.org/pdf/1903.11027)",
+            "item_count": 1
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T17:26:41"
+    }
+  ]
+}
