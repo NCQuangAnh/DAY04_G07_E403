@@ -1,0 +1,148 @@
+{
+  "transcript_id": "v0_openrouter_20260729T153851784366",
+  "version": "v0",
+  "artifact_version": "v0+peb1c8179815b+t6cdb53d5d7b8",
+  "prompt_hash": "eb1c8179815bd79d34de7d326420bb99b3072e6e8ae96464c02d4411f905fc68",
+  "tools_hash": "6cdb53d5d7b8de80d60b298b1357f462cedbedfae261d5ba60b08ccc401687c5",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "D:\\New folder (2)\\DAY04_G07_E403\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\New folder (2)\\DAY04_G07_E403\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T15:38:51",
+  "updated_at": "2026-07-29T15:39:04",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T15:38:51",
+      "user": "Lấy 3 bài đăng mới nhất của Sam Altman",
+      "status": "answered",
+      "assistant_text": "Here are the 3 most recent tweets from Sam Altman:\n\n1. **[wrong](https://x.com/sama/status/2081832600591892712)**  \n   Date: Mon Jul 27 20:02:25 +0000 2026  \n   Favorites: 11,311 | Retweets: 284 | Views: 2,202,843\n\n2. **[agreed feels big, i want a new kind of computer](https://x.com/sama/status/2081513071135346814)**  \n   Date: Sun Jul 26 22:52:43 +0000 2026  \n   Favorites: 8,136 | Retweets: 283 | Views: 2,400,160\n\n3. **[chatgpt work is remarkable, and \"work\" undersells it.](https://x.com/sama/status/2081396796174282900)**  \n   Date: Sun Jul 26 15:10:41 +0000 2026  \n   Summary: ChatGPT's capabilities were demonstrated by planning a trip with friends using chat history.  \n   Favorites: 17,420 | Retweets: 573 | Views: 3,586,887\n\nLet me know if you need anything else!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "timeline",
+              "args": {
+                "screenname": "sama",
+                "limit": 3
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "timeline",
+              "args": {
+                "screenname": "sama",
+                "limit": 3
+              },
+              "result": {
+                "tool": "get_user_tweets",
+                "screenname": "sama",
+                "items": [
+                  {
+                    "title": "wrong",
+                    "summary": "wrong",
+                    "url": "https://x.com/sama/status/2081832600591892712",
+                    "source": "@sama",
+                    "date": "Mon Jul 27 20:02:25 +0000 2026",
+                    "metrics": {
+                      "favorites": 11311,
+                      "retweets": 284,
+                      "views": "2202843"
+                    }
+                  },
+                  {
+                    "title": "agreed feels big, i want a new kind of computer",
+                    "summary": "agreed feels big, i want a new kind of computer",
+                    "url": "https://x.com/sama/status/2081513071135346814",
+                    "source": "@sama",
+                    "date": "Sun Jul 26 22:52:43 +0000 2026",
+                    "metrics": {
+                      "favorites": 8136,
+                      "retweets": 283,
+                      "views": "2400160"
+                    }
+                  },
+                  {
+                    "title": "chatgpt work is remarkable, and \"work\" undersells it.",
+                    "summary": "chatgpt work is remarkable, and \"work\" undersells it.\n\nfrom my phone i sent:\n\n\"use all my chat history to figure out ideas for a long weekend trip with 8 friends, plan the best three options, make a full-stack site where the 9 of us can coordinate on what we would want to do in each place and decide where to go, and then after we get to group agreement make reservations. draft an email in my gmail i can send out to my friends when the site is ready.\"\n\nit...just worked.",
+                    "url": "https://x.com/sama/status/2081396796174282900",
+                    "source": "@sama",
+                    "date": "Sun Jul 26 15:10:41 +0000 2026",
+                    "metrics": {
+                      "favorites": 17420,
+                      "retweets": 573,
+                      "views": "3586887"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are the 3 most recent tweets from Sam Altman:\n\n1. **[wrong](https://x.com/sama/status/2081832600591892712)**  \n   Date: Mon Jul 27 20:02:25 +0000 2026  \n   Favorites: 11,311 | Retweets: 284 | Views: 2,202,843\n\n2. **[agreed feels big, i want a new kind of computer](https://x.com/sama/status/2081513071135346814)**  \n   Date: Sun Jul 26 22:52:43 +0000 2026  \n   Favorites: 8,136 | Retweets: 283 | Views: 2,400,160\n\n3. **[chatgpt work is remarkable, and \"work\" undersells it.](https://x.com/sama/status/2081396796174282900)**  \n   Date: Sun Jul 26 15:10:41 +0000 2026  \n   Summary: ChatGPT's capabilities were demonstrated by planning a trip with friends using chat history.  \n   Favorites: 17,420 | Retweets: 573 | Views: 3,586,887\n\nLet me know if you need anything else!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "sama",
+            "limit": 3
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "sama",
+            "items": [
+              {
+                "title": "wrong",
+                "summary": "wrong",
+                "url": "https://x.com/sama/status/2081832600591892712",
+                "source": "@sama",
+                "date": "Mon Jul 27 20:02:25 +0000 2026",
+                "metrics": {
+                  "favorites": 11311,
+                  "retweets": 284,
+                  "views": "2202843"
+                }
+              },
+              {
+                "title": "agreed feels big, i want a new kind of computer",
+                "summary": "agreed feels big, i want a new kind of computer",
+                "url": "https://x.com/sama/status/2081513071135346814",
+                "source": "@sama",
+                "date": "Sun Jul 26 22:52:43 +0000 2026",
+                "metrics": {
+                  "favorites": 8136,
+                  "retweets": 283,
+                  "views": "2400160"
+                }
+              },
+              {
+                "title": "chatgpt work is remarkable, and \"work\" undersells it.",
+                "summary": "chatgpt work is remarkable, and \"work\" undersells it.\n\nfrom my phone i sent:\n\n\"use all my chat history to figure out ideas for a long weekend trip with 8 friends, plan the best three options, make a full-stack site where the 9 of us can coordinate on what we would want to do in each place and decide where to go, and then after we get to group agreement make reservations. draft an email in my gmail i can send out to my friends when the site is ready.\"\n\nit...just worked.",
+                "url": "https://x.com/sama/status/2081396796174282900",
+                "source": "@sama",
+                "date": "Sun Jul 26 15:10:41 +0000 2026",
+                "metrics": {
+                  "favorites": 17420,
+                  "retweets": 573,
+                  "views": "3586887"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T15:39:04"
+    }
+  ]
+}

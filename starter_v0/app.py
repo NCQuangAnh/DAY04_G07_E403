@@ -81,13 +81,62 @@ def inject_styles() -> None:
             color: #a9beb3 !important;
         }
         [data-testid="stSidebar"] input {
-            color: #10241b !important;
+            color: #eff8f3 !important;
+            -webkit-text-fill-color: #eff8f3 !important;
+            caret-color: #7ee2ae !important;
+        }
+        [data-testid="stSidebar"] input::placeholder {
+            color: #91a99d !important;
+            -webkit-text-fill-color: #91a99d !important;
         }
         [data-testid="stSidebar"] div[data-baseweb="select"] > div {
             color: #10241b !important;
+            background: #f7faf8 !important;
+            border-color: #d7e2dc !important;
         }
         [data-testid="stSidebar"] div[data-baseweb="select"] * {
             color: #10241b !important;
+            -webkit-text-fill-color: #10241b !important;
+        }
+        [data-testid="stSidebar"] div[data-baseweb="select"] svg {
+            fill: #52645b !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stTextInput"] > div > div {
+            background: #091812 !important;
+            border-color: #29483a !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {
+            color: #a9beb3 !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stCodeBlock"] {
+            background: #f7faf8 !important;
+            border: 1px solid #d7e2dc !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stCodeBlock"] pre,
+        [data-testid="stSidebar"] [data-testid="stCodeBlock"] code,
+        [data-testid="stSidebar"] [data-testid="stCodeBlock"] span {
+            color: #0b5133 !important;
+            -webkit-text-fill-color: #0b5133 !important;
+            background: #f7faf8 !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stCodeBlock"] button,
+        [data-testid="stSidebar"] [data-testid="stCodeBlock"] button * {
+            color: #0b5133 !important;
+            -webkit-text-fill-color: #0b5133 !important;
+        }
+        [data-testid="stSidebar"] .artifact-code {
+            color: #0b5133 !important;
+            background: #f7faf8;
+            border: 1px solid #d7e2dc;
+            border-radius: .55rem;
+            padding: .75rem .85rem;
+            margin: .35rem 0 .7rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: .76rem;
+            font-weight: 700;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+            -webkit-text-fill-color: #0b5133 !important;
         }
         .block-container {
             max-width: 1500px;
@@ -235,6 +284,14 @@ def inject_styles() -> None:
             padding: .35rem .55rem;
             margin-bottom: .7rem;
         }
+        [data-testid="stChatMessage"] p,
+        [data-testid="stChatMessage"] li,
+        [data-testid="stChatMessage"] span {
+            color: var(--ink) !important;
+        }
+        [data-testid="stChatMessage"] a {
+            color: var(--green) !important;
+        }
         [data-testid="stMetric"] {
             background: rgba(255,255,255,.72);
             border: 1px solid var(--line);
@@ -243,12 +300,44 @@ def inject_styles() -> None:
         }
         .stButton > button {
             border-radius: .7rem;
-            border-color: #cbd9d1;
+            border: 1px solid #26342e;
+            background: #141c19;
+            color: #f4fbf7 !important;
             font-weight: 650;
+        }
+        .stButton > button p,
+        .stButton > button span {
+            color: #f4fbf7 !important;
+        }
+        .stButton > button:hover {
+            border-color: #16784c;
+            background: #1d2b25;
+            color: #ffffff !important;
         }
         .stButton > button[kind="primary"] {
             background: var(--green-dark);
             border-color: var(--green-dark);
+        }
+        [data-testid="stExpander"] details {
+            border-color: #d7e2dc !important;
+            background: rgba(255,255,255,.58);
+        }
+        [data-testid="stExpander"] details > summary {
+            background: #edf4f0 !important;
+            color: var(--ink) !important;
+        }
+        [data-testid="stExpander"] details > summary * {
+            color: var(--ink) !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stExpander"] details {
+            border-color: #365345 !important;
+            background: transparent;
+        }
+        [data-testid="stSidebar"] [data-testid="stExpander"] details > summary {
+            background: transparent !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stExpander"] details > summary * {
+            color: #eff8f3 !important;
         }
         code { color: #185c3e; }
         </style>
@@ -383,7 +472,10 @@ def render_sidebar() -> tuple[str, dict[str, Any]]:
         st.divider()
         st.caption("ARTIFACT ĐANG CHẠY")
         artifact = current_artifact(config["version"])
-        st.code(artifact["artifact_version"], language=None, wrap_lines=True)
+        st.markdown(
+            f'<div class="artifact-code">{html.escape(artifact["artifact_version"])}</div>',
+            unsafe_allow_html=True,
+        )
         st.caption(f"Prompt · {artifact['prompt_hash'][:12]}")
         st.caption(f"Tools · {artifact['tools_hash'][:12]}")
 
