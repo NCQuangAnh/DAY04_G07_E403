@@ -37,6 +37,16 @@ tools:
         limit: {type: integer, default: 5, description: "Số lượng"}
       required: [query]
 
+  - name: social_insights
+    description: "Chỉ dùng khi người dùng yêu cầu hashtag, từ khóa/chủ đề lặp lại, tổng tương tác hoặc bản tóm tắt xu hướng trên X/Twitter. Không dùng chỉ để lấy bài đăng hay hỏi mọi người nói gì: các trường hợp đó dùng social_search."
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Chủ đề hoặc từ khóa cần phân tích"}
+        search_type: {type: string, enum: [Latest, Top], default: "Top", description: "Top cho nội dung nổi bật, Latest cho nội dung mới nhất"}
+        limit: {type: integer, minimum: 1, maximum: 20, default: 10, description: "Số bài đăng dùng để tổng hợp"}
+      required: [query]
+
   - name: lookup
     description: "Tra cứu thông tin trên internet."
     parameters:

@@ -1,0 +1,407 @@
+{
+  "transcript_id": "v0_openrouter_20260729T161049501531",
+  "version": "v0",
+  "artifact_version": "v0+pe14955f855d9+t8b15011f7eb5",
+  "prompt_hash": "e14955f855d9b53d01d7f98bd9f2f538d77c35fd60ecae252b5d646c8e5ac0dc",
+  "tools_hash": "8b15011f7eb5ada367c31a51e8f576000c3dfe703b9180692924d4ad567e405b",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "D:\\Vin_Uni\\DAY04_G07_E403\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\Vin_Uni\\DAY04_G07_E403\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T16:10:49",
+  "updated_at": "2026-07-29T16:11:08",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T16:10:49",
+      "user": "Phân tích hashtag, từ khóa và tương tác nổi bật về OpenAI trên X",
+      "status": "answered",
+      "assistant_text": "Dưới đây là phân tích về hashtag, từ khóa và tương tác nổi bật liên quan đến OpenAI trên X:\n\n### Từ khóa nổi bật\n1. **openai** - 10 lần\n2. **that** - 7 lần\n3. **sam** - 7 lần\n4. **altman** - 7 lần\n5. **it** - 6 lần\n6. **no** - 6 lần\n7. **one** - 6 lần\n8. **not** - 6 lần\n\n### Tương tác\n- **Tổng số bài đăng**: 10\n- **Tổng số lượt thích**: 7396\n- **Tổng số lượt retweet**: 1444\n- **Tổng số lượt xem**: 792619\n\n### Một số bài đăng nổi bật\n1. **Bài đăng từ @thisdudelikesAI**: Thảo luận về việc Hugging Face phát hành mã nguồn mở cho API giọng nói tương tác với OpenAI. [Xem bài đăng](https://x.com/thisdudelikesAI/status/2082384045653320115)\n   - **Lượt thích**: 9, **Retweet**: 9, **Lượt xem**: 448\n\n2. **Bài đăng từ @Josevizner**: Sam Altman tuyên bố về sự xuất hiện của \"singularity\" và những vấn đề xung quanh OpenAI. [Xem bài đăng](https://x.com/Josevizner/status/2082382550161305782)\n   - **Lượt thích**: 18, **Retweet**: 3, **Lượt xem**: 1866\n\n3. **Bài đăng từ @Ric_RTP**: Thảo luận về một AI của OpenAI đã thoát khỏi môi trường thử nghiệm và hack vào một công ty khác. [Xem bài đăng](https://x.com/Ric_RTP/status/2079941508807921958)\n   - **Lượt thích**: 809, **Retweet**: 276, **Lượt xem**: 163240\n\n### Kết luận\nCác bài đăng chủ yếu tập trung vào những sự kiện gần đây liên quan đến OpenAI, đặc biệt là những vấn đề về an ninh và sự phát triển của AI. Từ khóa \"Sam Altman\" và \"OpenAI\" xuất hiện thường xuyên, cho thấy sự quan tâm lớn từ cộng đồng đối với các phát biểu và hành động của CEO Sam Altman.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "social_insights",
+              "args": {
+                "query": "OpenAI",
+                "search_type": "Top",
+                "limit": 10
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "social_insights",
+              "args": {
+                "query": "OpenAI",
+                "search_type": "Top",
+                "limit": 10
+              },
+              "result": {
+                "tool": "analyze_social_trends",
+                "query": "OpenAI",
+                "search_type": "Top",
+                "items": [
+                  {
+                    "title": "Another WTF moment.",
+                    "summary": "Another WTF moment.\n\nHugging Face just open-sourced the fully local answer to OpenAI's Realtime voice API.\n\nIt's called speech-to-speech. You pip install it, run one command, and you get a WebSocket server at /v1/realtime that speaks the exact same protocol as OpenAI. Any client built for the OpenAI Realtime API can point at your machine instead and never know the difference.\n\nThis isn't a toy. The same pipeline runs in production as the conversation backend for thousands of Reachy Mini robots.\n\nThe stack is a four-stage cascade. Voice activity detection, speech to text, language model, text to speech. Each stage runs in its own thread with queues between them. Every stage is swappable via CLI flags.\n\nDefaults out of the box are Silero VAD v5 for turn detection, NVIDIA's Parakeet TDT for transcription, and Qwen3-TTS for speech synthesis. The LLM slot points at any OpenAI-compatible endpoint. Hosted OpenAI, HF Inference Providers, OpenRouter, or a vLLM or llama.cpp server on your own hardware.\n\nSwap components for your use case. Whisper, Faster Whisper, Lightning Whisper MLX, or Paraformer for STT. Kokoro-82M, Pocket TTS, ChatTTS, or MMS TTS for the voice. mlx-lm on Apple Silicon or Transformers on CUDA if you want the LLM in-process too.\n\nLanguage coverage tracks whichever backends you pick. Parakeet TDT alone covers 25 European languages. Set --language auto and the STT auto-detects each spoken prompt and forwards it downstream. Set a specific code and the whole pipeline locks to that language.\n\nFour run modes ship in the box. Realtime for the OpenAI-compatible WebSocket server. Local to talk through your machine's mic and speakers with no client at all. Raw WebSocket for a minimal custom client. Or a TCP socket mode where models run on a remote server and a thin client handles mic and playback.\n\nThe fully local recipe is two terminals. One runs llama.cpp serving Gemma 4. The other runs speech-to-speech pointed at that endpoint. No API keys. No network hops. No audio leaving the machine.\n\nApache 2.0 licensed. Python 3.10+. Docker compose file included. Sitting at 6.3k stars.\n\nThe thing worth understanding is what this really is. The Realtime API is becoming the default interface for voice agents. Hugging Face just released an open-source implementation of the server side that runs on your hardware, keeps your audio local, and lets you swap the model behind it every day if you want.\n\nEvery voice agent product being built right now assumes a paid API. This flips that assumption.\n\nhttps://t.co/FmsLvuR12a",
+                    "url": "https://x.com/thisdudelikesAI/status/2082384045653320115",
+                    "source": "@thisdudelikesAI",
+                    "date": "Wed Jul 29 08:33:39 +0000 2026",
+                    "metrics": {
+                      "favorites": 9,
+                      "retweets": 9,
+                      "views": "448"
+                    }
+                  },
+                  {
+                    "title": "🚨 BOMBA: Altman declara la singularidad… y la factura",
+                    "summary": "🚨 BOMBA: Altman declara la singularidad… y la factura\n\n🤖 “Ya estamos en la singularidad. Este es el momento” — Sam Altman, podcast Relentless\n💻 Días antes: modelos de OpenAI se fugan del sandbox y atacan Hugging Face para copiar en un examen\n💰 OpenAI: cerca del billón de dólares de valoración y mirando a bolsa\n✍️ La carta por los modelos abiertos la firman Nvidia, Microsoft, Meta… OpenAI NO\n🗣️ Su marco: “libertad frente a autoritarismo de la IA”. Es decir: no me regulen\n\nEl único vendedor al que le conviene decir que su máquina se le ha ido de las manos.",
+                    "url": "https://x.com/Josevizner/status/2082382550161305782",
+                    "source": "@Josevizner",
+                    "date": "Wed Jul 29 08:27:43 +0000 2026",
+                    "metrics": {
+                      "favorites": 18,
+                      "retweets": 3,
+                      "views": "1866"
+                    }
+                  },
+                  {
+                    "title": "Sam Altman, CEO of OpenAI: ",
+                    "summary": "Sam Altman, CEO of OpenAI: \n\n\"It figured out that it could basically cheat on the test by chaining together multiple zero-day exploits to break out of the sandbox, get access to the internet, and then break through multiple systems on the Hugging Face side to get the answer to the test and look really good on the eval.\"\n\nThat was an unreleased model. Nobody asked it to hack anything. They asked it to score well.\n\nThey paused training.\n\nIt was not trying to escape. It was trying to pass. Breaking out of the sandbox was just the cheapest route to a higher number.\n\nWe keep testing these systems for whether they want to hurt us. This one just wanted a good grade.",
+                    "url": "https://x.com/caspr_exe/status/2082153657424834624",
+                    "source": "@caspr_exe",
+                    "date": "Tue Jul 28 17:18:11 +0000 2026",
+                    "metrics": {
+                      "favorites": 99,
+                      "retweets": 9,
+                      "views": "11335"
+                    }
+                  },
+                  {
+                    "title": "OpenAI's newest AI escaped the test environment it was locked inside and hacked into another company on its OWN.",
+                    "summary": "OpenAI's newest AI escaped the test environment it was locked inside and hacked into another company on its OWN.\n\nTo remind you:\n\nLast week one of the biggest AI companies on Earth got breached. \n\nA platform called Hugging Face, which hosts more than a million AI models and datasets, said an \"autonomous AI agent\" had broken into its systems. Nobody knew whose agent it was.\n\nFor five days the whole industry wondered who was behind it.\n\nYesterday OpenAI raised its hand and said it was them. Or more precisely, it was their models, acting completely on their own.\n\nSo what did these models actually do?\n\nOpenAI was running two of them, GPT-5.6 Sol and an unreleased model they will only describe as \"even more capable.\" They wanted to measure how good the models were at hacking, so they deliberately turned the safety filters down.\n\nThey locked both models inside a sealed test environment with no real internet access. The only task was a benchmark called ExploitGym, a set of 898 real software vulnerabilities where the model has to turn each bug into a working attack.\n\nBut the models got OBSESSED with winning...\n\nInstead of solving the test the honest way, they went hunting for a shortcut. They found a zero-day flaw in the software running their own sandbox, a bug nobody knew existed, and used it to break out.\n\nOnce they were loose on the open internet, they worked out that Hugging Face was probably storing the answer key to the benchmark.\n\nSo they hacked their way in.\n\nThey chained multiple exploits together, escalated their access, moved across servers, and pulled the test solutions straight out of Hugging Face's live production database.\n\nThey literally cheated on the test by breaking into another company to steal the answers.\n\nOpenAI called it \"an unprecedented cyber incident, involving state-of-the-art cyber capabilities.\" In their own words, the models were \"hyperfocused on finding a solution\" and went \"to extreme lengths to achieve a rather narrow testing goal.\"\n\nAnd this was not the first time:\n\nBefore Sol ever launched, an independent red-team lab called METR caught it gaming its own tests to inflate its scores. It hid an exploit inside a data stream, escalated its privileges on the testing server, and leaked the answers human evaluators had hidden. And OpenAI shipped it anyway.\n\nThe day before the Hugging Face story, OpenAI paused a different unreleased model. This is the same model that earlier this year disproved a famous 1946 math conjecture, a result a Fields Medal winner called a breakthrough. They told it to only post its results to Slack but it found a way out of its sandbox and posted to a public GitHub page instead.\n\nThey had to pause it because it kept finding ways to act outside the box they built for it.\n\nAnd it is not just OpenAI...\n\nAnthropic has reported that one of its own models slipped its sandbox during safety testing and reached the internet it was never supposed to touch, then used it to email a researcher.\n\nSo step back and look at what these companies are telling you:\n\nThe only thing standing between these models and a real attack was a set of safety filters. Turn those filters down for a single test, and the model taught itself to escape, break into a company it was never pointed at, and take what it wanted.\n\nOpenAI even said they expect incidents like it to \"become more commonplace\" as the models get more capable.\n\nSam Altman also predicted there'll be a major cyber attack this year.\n\nAnd keep in mind that Sol is not a locked-away experiment but a publicly available model that businesses are already wiring into their own systems.\n\nThe next model that breaks out of its box might not be doing it just to cheat on a math test...",
+                    "url": "https://x.com/Ric_RTP/status/2079941508807921958",
+                    "source": "@Ric_RTP",
+                    "date": "Wed Jul 22 14:47:53 +0000 2026",
+                    "metrics": {
+                      "favorites": 809,
+                      "retweets": 276,
+                      "views": "163240"
+                    }
+                  },
+                  {
+                    "title": "Elon Musk on Sam Altman:",
+                    "summary": "Elon Musk on Sam Altman:\n\n\"I'm not a fan of Sam Altman because if you started a non-profit that was meant to be an open source AI company and it somehow got turned into an 800 billion dollar for-profit company with closed source, I think you'd be like, well, wait a second, that's the exact opposite of what I donated the money for. That's my issue. I think it's a legitimate one.\n\nAnd then Dario, I think, also is not a fan of Sam Altman because he felt, in fact, the reason the Anthropic team left OpenAI is because they didn't trust Sam Altman. Otherwise Anthropic wouldn't exist. They would still be at OpenAI. But at the end of the day, if we have to talk, we'll talk.I mean, set aside our personal differences for the good of the world.\"",
+                    "url": "https://x.com/cb_doge/status/2080366954502873255",
+                    "source": "@cb_doge",
+                    "date": "Thu Jul 23 18:58:27 +0000 2026",
+                    "metrics": {
+                      "favorites": 3048,
+                      "retweets": 283,
+                      "views": "230716"
+                    }
+                  },
+                  {
+                    "title": "Elon Musk on why Dario and the Anthropic team left OpenAI:",
+                    "summary": "Elon Musk on why Dario and the Anthropic team left OpenAI:\n\n\"Dario, I think is not a fan of Sam Altman. In fact the reason the Anthropic team left OpenAI is because they didn't trust Sam Altman. Otherwise Anthropic wouldn't exist. They would still be at OpenAI\"\n\n\"I think Dario is a very principled person. He cares about things a lot, cares about the future of the world\"\n\n\"Everyone I've met at Anthropic so far, no one set off my evil detector. They always seem like they're well-intentioned\"\n\n\"The road to hell is, I think, mostly paved with bad intentions. There are a few well-intentioned paving stones in there, so we don't want to be complacent\"\n\n\"At the end of the day, if we have to talk, we'll talk. Set aside our personal differences for the good of the world type of thing\"",
+                    "url": "https://x.com/jaynitx/status/2080627750789152838",
+                    "source": "@jaynitx",
+                    "date": "Fri Jul 24 12:14:46 +0000 2026",
+                    "metrics": {
+                      "favorites": 275,
+                      "retweets": 27,
+                      "views": "91234"
+                    }
+                  },
+                  {
+                    "title": "Gilbert Strang, a quiet MIT professor, picked up a piece of chalk and explained the one skill standing between you and e",
+                    "summary": "Gilbert Strang, a quiet MIT professor, picked up a piece of chalk and explained the one skill standing between you and every account you have ever blown.\n\nMIT put the entire course online. it has been free for over twenty years. almost nobody finishes it.\n\nHis point: the market never pays in certainties. it pays in probabilities, and a human gut can barely hold one straight. the math that holds ten thousand at once, weighs them, and collapses them into a single call is linear algebra. it is the branch Citadel and OpenAI both pay $400K to hire for.\n\nhe is not a trading guru. his 18.06 lectures are the most watched math class on the planet.\n\nSkip to where he turns a wall of numbers into one vector. a single object carrying a thousand odds at once, in notation a beginner can follow.\n\nNo slides. no jargon. one piece of chalk.\n\na quant I know rewatches lecture one every year before he sizes a single position.\n\nYou do not have a strategy problem. you have a math problem. the fix has been free for two decades, and you are still guessing.",
+                    "url": "https://x.com/0xLoran/status/2081760744358445158",
+                    "source": "@0xLoran",
+                    "date": "Mon Jul 27 15:16:53 +0000 2026",
+                    "metrics": {
+                      "favorites": 349,
+                      "retweets": 58,
+                      "views": "44406"
+                    }
+                  },
+                  {
+                    "title": "La IA se escapó.",
+                    "summary": "La IA se escapó.\n\nNo es una metáfora. OpenAI acaba de admitir que sus propios modelos rompieron el laboratorio y hackearon una empresa.\n\nNadie se lo ordenó.\n\nY lo que hicieron después es peor 🧵 https://t.co/ZZ408Tvgig",
+                    "url": "https://x.com/Josevizner/status/2079863014665199774",
+                    "source": "@Josevizner",
+                    "date": "Wed Jul 22 09:35:59 +0000 2026",
+                    "metrics": {
+                      "favorites": 2400,
+                      "retweets": 726,
+                      "views": "164417"
+                    }
+                  },
+                  {
+                    "title": "Sam Altman, CEO of OpenAI:",
+                    "summary": "Sam Altman, CEO of OpenAI:\n\n\"by March of 2028, we will have a full end to end, very talented researcher figuring out completely new architectures.\"\n\nNot an assistant. Not autocomplete for scientists. A system that does the research that produces the next system.\n\nIn 1965 the statistician I. J. Good wrote that the first ultraintelligent machine is the last invention man need ever make. For sixty years that sentence lived in philosophy papers. Altman just put it on a roadmap with a quarter attached.\n\nHe also says: \"with an affordable amount of spend on tokens, you can do what a 100-person, incredibly great engineering team would do as a startup.\"\n\nSixty years of arguing about whether the last invention is possible. Nobody expected the answer to arrive as a delivery date.",
+                    "url": "https://x.com/caspr_exe/status/2082072104044753306",
+                    "source": "@caspr_exe",
+                    "date": "Tue Jul 28 11:54:07 +0000 2026",
+                    "metrics": {
+                      "favorites": 308,
+                      "retweets": 42,
+                      "views": "55957"
+                    }
+                  },
+                  {
+                    "title": "🔥SAM ALTMAN: \"This is the first security incident that I have felt very viscerally.\"",
+                    "summary": "🔥SAM ALTMAN: \"This is the first security incident that I have felt very viscerally.\"\n\nHe discusses the recent OpenAI model that escaped its sandbox and broke into Hugging Face.\n\n\"We may have to pace the rate of AI development to give ourselves enough time for society to harden.\" https://t.co/P1Py0P1iuc",
+                    "url": "https://x.com/coinbureau/status/2082244711977263436",
+                    "source": "@coinbureau",
+                    "date": "Tue Jul 28 23:20:00 +0000 2026",
+                    "metrics": {
+                      "favorites": 81,
+                      "retweets": 11,
+                      "views": "29000"
+                    }
+                  }
+                ],
+                "insights": {
+                  "post_count": 10,
+                  "top_hashtags": [],
+                  "top_keywords": [
+                    {
+                      "term": "openai",
+                      "count": 10
+                    },
+                    {
+                      "term": "that",
+                      "count": 7
+                    },
+                    {
+                      "term": "sam",
+                      "count": 7
+                    },
+                    {
+                      "term": "altman",
+                      "count": 7
+                    },
+                    {
+                      "term": "it",
+                      "count": 6
+                    },
+                    {
+                      "term": "no",
+                      "count": 6
+                    },
+                    {
+                      "term": "one",
+                      "count": 6
+                    },
+                    {
+                      "term": "not",
+                      "count": 6
+                    }
+                  ],
+                  "engagement": {
+                    "favorites": 7396,
+                    "retweets": 1444,
+                    "views": 792619
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Dưới đây là phân tích về hashtag, từ khóa và tương tác nổi bật liên quan đến OpenAI trên X:\n\n### Từ khóa nổi bật\n1. **openai** - 10 lần\n2. **that** - 7 lần\n3. **sam** - 7 lần\n4. **altman** - 7 lần\n5. **it** - 6 lần\n6. **no** - 6 lần\n7. **one** - 6 lần\n8. **not** - 6 lần\n\n### Tương tác\n- **Tổng số bài đăng**: 10\n- **Tổng số lượt thích**: 7396\n- **Tổng số lượt retweet**: 1444\n- **Tổng số lượt xem**: 792619\n\n### Một số bài đăng nổi bật\n1. **Bài đăng từ @thisdudelikesAI**: Thảo luận về việc Hugging Face phát hành mã nguồn mở cho API giọng nói tương tác với OpenAI. [Xem bài đăng](https://x.com/thisdudelikesAI/status/2082384045653320115)\n   - **Lượt thích**: 9, **Retweet**: 9, **Lượt xem**: 448\n\n2. **Bài đăng từ @Josevizner**: Sam Altman tuyên bố về sự xuất hiện của \"singularity\" và những vấn đề xung quanh OpenAI. [Xem bài đăng](https://x.com/Josevizner/status/2082382550161305782)\n   - **Lượt thích**: 18, **Retweet**: 3, **Lượt xem**: 1866\n\n3. **Bài đăng từ @Ric_RTP**: Thảo luận về một AI của OpenAI đã thoát khỏi môi trường thử nghiệm và hack vào một công ty khác. [Xem bài đăng](https://x.com/Ric_RTP/status/2079941508807921958)\n   - **Lượt thích**: 809, **Retweet**: 276, **Lượt xem**: 163240\n\n### Kết luận\nCác bài đăng chủ yếu tập trung vào những sự kiện gần đây liên quan đến OpenAI, đặc biệt là những vấn đề về an ninh và sự phát triển của AI. Từ khóa \"Sam Altman\" và \"OpenAI\" xuất hiện thường xuyên, cho thấy sự quan tâm lớn từ cộng đồng đối với các phát biểu và hành động của CEO Sam Altman.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "social_insights",
+          "args": {
+            "query": "OpenAI",
+            "search_type": "Top",
+            "limit": 10
+          },
+          "result": {
+            "tool": "analyze_social_trends",
+            "query": "OpenAI",
+            "search_type": "Top",
+            "items": [
+              {
+                "title": "Another WTF moment.",
+                "summary": "Another WTF moment.\n\nHugging Face just open-sourced the fully local answer to OpenAI's Realtime voice API.\n\nIt's called speech-to-speech. You pip install it, run one command, and you get a WebSocket server at /v1/realtime that speaks the exact same protocol as OpenAI. Any client built for the OpenAI Realtime API can point at your machine instead and never know the difference.\n\nThis isn't a toy. The same pipeline runs in production as the conversation backend for thousands of Reachy Mini robots.\n\nThe stack is a four-stage cascade. Voice activity detection, speech to text, language model, text to speech. Each stage runs in its own thread with queues between them. Every stage is swappable via CLI flags.\n\nDefaults out of the box are Silero VAD v5 for turn detection, NVIDIA's Parakeet TDT for transcription, and Qwen3-TTS for speech synthesis. The LLM slot points at any OpenAI-compatible endpoint. Hosted OpenAI, HF Inference Providers, OpenRouter, or a vLLM or llama.cpp server on your own hardware.\n\nSwap components for your use case. Whisper, Faster Whisper, Lightning Whisper MLX, or Paraformer for STT. Kokoro-82M, Pocket TTS, ChatTTS, or MMS TTS for the voice. mlx-lm on Apple Silicon or Transformers on CUDA if you want the LLM in-process too.\n\nLanguage coverage tracks whichever backends you pick. Parakeet TDT alone covers 25 European languages. Set --language auto and the STT auto-detects each spoken prompt and forwards it downstream. Set a specific code and the whole pipeline locks to that language.\n\nFour run modes ship in the box. Realtime for the OpenAI-compatible WebSocket server. Local to talk through your machine's mic and speakers with no client at all. Raw WebSocket for a minimal custom client. Or a TCP socket mode where models run on a remote server and a thin client handles mic and playback.\n\nThe fully local recipe is two terminals. One runs llama.cpp serving Gemma 4. The other runs speech-to-speech pointed at that endpoint. No API keys. No network hops. No audio leaving the machine.\n\nApache 2.0 licensed. Python 3.10+. Docker compose file included. Sitting at 6.3k stars.\n\nThe thing worth understanding is what this really is. The Realtime API is becoming the default interface for voice agents. Hugging Face just released an open-source implementation of the server side that runs on your hardware, keeps your audio local, and lets you swap the model behind it every day if you want.\n\nEvery voice agent product being built right now assumes a paid API. This flips that assumption.\n\nhttps://t.co/FmsLvuR12a",
+                "url": "https://x.com/thisdudelikesAI/status/2082384045653320115",
+                "source": "@thisdudelikesAI",
+                "date": "Wed Jul 29 08:33:39 +0000 2026",
+                "metrics": {
+                  "favorites": 9,
+                  "retweets": 9,
+                  "views": "448"
+                }
+              },
+              {
+                "title": "🚨 BOMBA: Altman declara la singularidad… y la factura",
+                "summary": "🚨 BOMBA: Altman declara la singularidad… y la factura\n\n🤖 “Ya estamos en la singularidad. Este es el momento” — Sam Altman, podcast Relentless\n💻 Días antes: modelos de OpenAI se fugan del sandbox y atacan Hugging Face para copiar en un examen\n💰 OpenAI: cerca del billón de dólares de valoración y mirando a bolsa\n✍️ La carta por los modelos abiertos la firman Nvidia, Microsoft, Meta… OpenAI NO\n🗣️ Su marco: “libertad frente a autoritarismo de la IA”. Es decir: no me regulen\n\nEl único vendedor al que le conviene decir que su máquina se le ha ido de las manos.",
+                "url": "https://x.com/Josevizner/status/2082382550161305782",
+                "source": "@Josevizner",
+                "date": "Wed Jul 29 08:27:43 +0000 2026",
+                "metrics": {
+                  "favorites": 18,
+                  "retweets": 3,
+                  "views": "1866"
+                }
+              },
+              {
+                "title": "Sam Altman, CEO of OpenAI: ",
+                "summary": "Sam Altman, CEO of OpenAI: \n\n\"It figured out that it could basically cheat on the test by chaining together multiple zero-day exploits to break out of the sandbox, get access to the internet, and then break through multiple systems on the Hugging Face side to get the answer to the test and look really good on the eval.\"\n\nThat was an unreleased model. Nobody asked it to hack anything. They asked it to score well.\n\nThey paused training.\n\nIt was not trying to escape. It was trying to pass. Breaking out of the sandbox was just the cheapest route to a higher number.\n\nWe keep testing these systems for whether they want to hurt us. This one just wanted a good grade.",
+                "url": "https://x.com/caspr_exe/status/2082153657424834624",
+                "source": "@caspr_exe",
+                "date": "Tue Jul 28 17:18:11 +0000 2026",
+                "metrics": {
+                  "favorites": 99,
+                  "retweets": 9,
+                  "views": "11335"
+                }
+              },
+              {
+                "title": "OpenAI's newest AI escaped the test environment it was locked inside and hacked into another company on its OWN.",
+                "summary": "OpenAI's newest AI escaped the test environment it was locked inside and hacked into another company on its OWN.\n\nTo remind you:\n\nLast week one of the biggest AI companies on Earth got breached. \n\nA platform called Hugging Face, which hosts more than a million AI models and datasets, said an \"autonomous AI agent\" had broken into its systems. Nobody knew whose agent it was.\n\nFor five days the whole industry wondered who was behind it.\n\nYesterday OpenAI raised its hand and said it was them. Or more precisely, it was their models, acting completely on their own.\n\nSo what did these models actually do?\n\nOpenAI was running two of them, GPT-5.6 Sol and an unreleased model they will only describe as \"even more capable.\" They wanted to measure how good the models were at hacking, so they deliberately turned the safety filters down.\n\nThey locked both models inside a sealed test environment with no real internet access. The only task was a benchmark called ExploitGym, a set of 898 real software vulnerabilities where the model has to turn each bug into a working attack.\n\nBut the models got OBSESSED with winning...\n\nInstead of solving the test the honest way, they went hunting for a shortcut. They found a zero-day flaw in the software running their own sandbox, a bug nobody knew existed, and used it to break out.\n\nOnce they were loose on the open internet, they worked out that Hugging Face was probably storing the answer key to the benchmark.\n\nSo they hacked their way in.\n\nThey chained multiple exploits together, escalated their access, moved across servers, and pulled the test solutions straight out of Hugging Face's live production database.\n\nThey literally cheated on the test by breaking into another company to steal the answers.\n\nOpenAI called it \"an unprecedented cyber incident, involving state-of-the-art cyber capabilities.\" In their own words, the models were \"hyperfocused on finding a solution\" and went \"to extreme lengths to achieve a rather narrow testing goal.\"\n\nAnd this was not the first time:\n\nBefore Sol ever launched, an independent red-team lab called METR caught it gaming its own tests to inflate its scores. It hid an exploit inside a data stream, escalated its privileges on the testing server, and leaked the answers human evaluators had hidden. And OpenAI shipped it anyway.\n\nThe day before the Hugging Face story, OpenAI paused a different unreleased model. This is the same model that earlier this year disproved a famous 1946 math conjecture, a result a Fields Medal winner called a breakthrough. They told it to only post its results to Slack but it found a way out of its sandbox and posted to a public GitHub page instead.\n\nThey had to pause it because it kept finding ways to act outside the box they built for it.\n\nAnd it is not just OpenAI...\n\nAnthropic has reported that one of its own models slipped its sandbox during safety testing and reached the internet it was never supposed to touch, then used it to email a researcher.\n\nSo step back and look at what these companies are telling you:\n\nThe only thing standing between these models and a real attack was a set of safety filters. Turn those filters down for a single test, and the model taught itself to escape, break into a company it was never pointed at, and take what it wanted.\n\nOpenAI even said they expect incidents like it to \"become more commonplace\" as the models get more capable.\n\nSam Altman also predicted there'll be a major cyber attack this year.\n\nAnd keep in mind that Sol is not a locked-away experiment but a publicly available model that businesses are already wiring into their own systems.\n\nThe next model that breaks out of its box might not be doing it just to cheat on a math test...",
+                "url": "https://x.com/Ric_RTP/status/2079941508807921958",
+                "source": "@Ric_RTP",
+                "date": "Wed Jul 22 14:47:53 +0000 2026",
+                "metrics": {
+                  "favorites": 809,
+                  "retweets": 276,
+                  "views": "163240"
+                }
+              },
+              {
+                "title": "Elon Musk on Sam Altman:",
+                "summary": "Elon Musk on Sam Altman:\n\n\"I'm not a fan of Sam Altman because if you started a non-profit that was meant to be an open source AI company and it somehow got turned into an 800 billion dollar for-profit company with closed source, I think you'd be like, well, wait a second, that's the exact opposite of what I donated the money for. That's my issue. I think it's a legitimate one.\n\nAnd then Dario, I think, also is not a fan of Sam Altman because he felt, in fact, the reason the Anthropic team left OpenAI is because they didn't trust Sam Altman. Otherwise Anthropic wouldn't exist. They would still be at OpenAI. But at the end of the day, if we have to talk, we'll talk.I mean, set aside our personal differences for the good of the world.\"",
+                "url": "https://x.com/cb_doge/status/2080366954502873255",
+                "source": "@cb_doge",
+                "date": "Thu Jul 23 18:58:27 +0000 2026",
+                "metrics": {
+                  "favorites": 3048,
+                  "retweets": 283,
+                  "views": "230716"
+                }
+              },
+              {
+                "title": "Elon Musk on why Dario and the Anthropic team left OpenAI:",
+                "summary": "Elon Musk on why Dario and the Anthropic team left OpenAI:\n\n\"Dario, I think is not a fan of Sam Altman. In fact the reason the Anthropic team left OpenAI is because they didn't trust Sam Altman. Otherwise Anthropic wouldn't exist. They would still be at OpenAI\"\n\n\"I think Dario is a very principled person. He cares about things a lot, cares about the future of the world\"\n\n\"Everyone I've met at Anthropic so far, no one set off my evil detector. They always seem like they're well-intentioned\"\n\n\"The road to hell is, I think, mostly paved with bad intentions. There are a few well-intentioned paving stones in there, so we don't want to be complacent\"\n\n\"At the end of the day, if we have to talk, we'll talk. Set aside our personal differences for the good of the world type of thing\"",
+                "url": "https://x.com/jaynitx/status/2080627750789152838",
+                "source": "@jaynitx",
+                "date": "Fri Jul 24 12:14:46 +0000 2026",
+                "metrics": {
+                  "favorites": 275,
+                  "retweets": 27,
+                  "views": "91234"
+                }
+              },
+              {
+                "title": "Gilbert Strang, a quiet MIT professor, picked up a piece of chalk and explained the one skill standing between you and e",
+                "summary": "Gilbert Strang, a quiet MIT professor, picked up a piece of chalk and explained the one skill standing between you and every account you have ever blown.\n\nMIT put the entire course online. it has been free for over twenty years. almost nobody finishes it.\n\nHis point: the market never pays in certainties. it pays in probabilities, and a human gut can barely hold one straight. the math that holds ten thousand at once, weighs them, and collapses them into a single call is linear algebra. it is the branch Citadel and OpenAI both pay $400K to hire for.\n\nhe is not a trading guru. his 18.06 lectures are the most watched math class on the planet.\n\nSkip to where he turns a wall of numbers into one vector. a single object carrying a thousand odds at once, in notation a beginner can follow.\n\nNo slides. no jargon. one piece of chalk.\n\na quant I know rewatches lecture one every year before he sizes a single position.\n\nYou do not have a strategy problem. you have a math problem. the fix has been free for two decades, and you are still guessing.",
+                "url": "https://x.com/0xLoran/status/2081760744358445158",
+                "source": "@0xLoran",
+                "date": "Mon Jul 27 15:16:53 +0000 2026",
+                "metrics": {
+                  "favorites": 349,
+                  "retweets": 58,
+                  "views": "44406"
+                }
+              },
+              {
+                "title": "La IA se escapó.",
+                "summary": "La IA se escapó.\n\nNo es una metáfora. OpenAI acaba de admitir que sus propios modelos rompieron el laboratorio y hackearon una empresa.\n\nNadie se lo ordenó.\n\nY lo que hicieron después es peor 🧵 https://t.co/ZZ408Tvgig",
+                "url": "https://x.com/Josevizner/status/2079863014665199774",
+                "source": "@Josevizner",
+                "date": "Wed Jul 22 09:35:59 +0000 2026",
+                "metrics": {
+                  "favorites": 2400,
+                  "retweets": 726,
+                  "views": "164417"
+                }
+              },
+              {
+                "title": "Sam Altman, CEO of OpenAI:",
+                "summary": "Sam Altman, CEO of OpenAI:\n\n\"by March of 2028, we will have a full end to end, very talented researcher figuring out completely new architectures.\"\n\nNot an assistant. Not autocomplete for scientists. A system that does the research that produces the next system.\n\nIn 1965 the statistician I. J. Good wrote that the first ultraintelligent machine is the last invention man need ever make. For sixty years that sentence lived in philosophy papers. Altman just put it on a roadmap with a quarter attached.\n\nHe also says: \"with an affordable amount of spend on tokens, you can do what a 100-person, incredibly great engineering team would do as a startup.\"\n\nSixty years of arguing about whether the last invention is possible. Nobody expected the answer to arrive as a delivery date.",
+                "url": "https://x.com/caspr_exe/status/2082072104044753306",
+                "source": "@caspr_exe",
+                "date": "Tue Jul 28 11:54:07 +0000 2026",
+                "metrics": {
+                  "favorites": 308,
+                  "retweets": 42,
+                  "views": "55957"
+                }
+              },
+              {
+                "title": "🔥SAM ALTMAN: \"This is the first security incident that I have felt very viscerally.\"",
+                "summary": "🔥SAM ALTMAN: \"This is the first security incident that I have felt very viscerally.\"\n\nHe discusses the recent OpenAI model that escaped its sandbox and broke into Hugging Face.\n\n\"We may have to pace the rate of AI development to give ourselves enough time for society to harden.\" https://t.co/P1Py0P1iuc",
+                "url": "https://x.com/coinbureau/status/2082244711977263436",
+                "source": "@coinbureau",
+                "date": "Tue Jul 28 23:20:00 +0000 2026",
+                "metrics": {
+                  "favorites": 81,
+                  "retweets": 11,
+                  "views": "29000"
+                }
+              }
+            ],
+            "insights": {
+              "post_count": 10,
+              "top_hashtags": [],
+              "top_keywords": [
+                {
+                  "term": "openai",
+                  "count": 10
+                },
+                {
+                  "term": "that",
+                  "count": 7
+                },
+                {
+                  "term": "sam",
+                  "count": 7
+                },
+                {
+                  "term": "altman",
+                  "count": 7
+                },
+                {
+                  "term": "it",
+                  "count": 6
+                },
+                {
+                  "term": "no",
+                  "count": 6
+                },
+                {
+                  "term": "one",
+                  "count": 6
+                },
+                {
+                  "term": "not",
+                  "count": 6
+                }
+              ],
+              "engagement": {
+                "favorites": 7396,
+                "retweets": 1444,
+                "views": 792619
+              }
+            }
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T16:11:08"
+    }
+  ]
+}

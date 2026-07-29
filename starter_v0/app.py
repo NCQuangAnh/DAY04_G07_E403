@@ -41,6 +41,8 @@ SAMPLE_PROMPTS = [
     "Tóm tắt bài này giúp mình: https://openai.com/news/",
 ]
 
+SAMPLE_PROMPTS.append("Phân tích hashtag, từ khóa và tương tác nổi bật về OpenAI trên X")
+
 
 st.set_page_config(
     page_title="Relay · Research Agent",
@@ -89,17 +91,26 @@ def inject_styles() -> None:
             color: #91a99d !important;
             -webkit-text-fill-color: #91a99d !important;
         }
-        [data-testid="stSidebar"] div[data-baseweb="select"] > div {
-            color: #10241b !important;
-            background: #f7faf8 !important;
-            border-color: #d7e2dc !important;
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] div[data-baseweb="select"],
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] [role="combobox"] {
+            color: #eff8f3 !important;
+            background-color: #091812 !important;
+            border-color: #29483a !important;
         }
-        [data-testid="stSidebar"] div[data-baseweb="select"] * {
-            color: #10241b !important;
-            -webkit-text-fill-color: #10241b !important;
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] div[data-baseweb="select"] * {
+            color: #eff8f3 !important;
+            -webkit-text-fill-color: #eff8f3 !important;
         }
-        [data-testid="stSidebar"] div[data-baseweb="select"] svg {
-            fill: #52645b !important;
+        /* Streamlit renders the selected option in a combobox input. */
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] div[data-baseweb="select"] input,
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] input[role="combobox"] {
+            color: #eff8f3 !important;
+            -webkit-text-fill-color: #eff8f3 !important;
+            caret-color: #7ee2ae !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] div[data-baseweb="select"] svg {
+            fill: #a9beb3 !important;
         }
         [data-testid="stSidebar"] [data-testid="stTextInput"] > div > div {
             background: #091812 !important;
@@ -472,6 +483,12 @@ def render_sidebar() -> tuple[str, dict[str, Any]]:
         st.divider()
         st.caption("ARTIFACT ĐANG CHẠY")
         artifact = current_artifact(config["version"])
+        with st.expander("Công cụ khả dụng"):
+            for declaration in load_tool_declarations(TOOLS_PATH):
+                name = declaration.get("name", "unknown")
+                description = declaration.get("description", "")
+                st.markdown(f"**{html.escape(name)}**")
+                st.caption(description)
         st.markdown(
             f'<div class="artifact-code">{html.escape(artifact["artifact_version"])}</div>',
             unsafe_allow_html=True,
@@ -676,7 +693,7 @@ def render_playground(config: dict[str, Any]) -> None:
         )
 
     st.markdown('<div class="section-title">Thử nhanh một scenario</div>', unsafe_allow_html=True)
-    sample_columns = st.columns(3)
+    sample_columns = st.columns(len(SAMPLE_PROMPTS))
     selected_sample: str | None = None
     for index, (column, sample) in enumerate(zip(sample_columns, SAMPLE_PROMPTS)):
         with column:
