@@ -126,3 +126,24 @@ tools:
         max_pages: {type: integer, default: 5, description: "Số trang"}
         max_chars: {type: integer, default: 8000, description: "Số ký tự"}
       required: [arxiv_url]
+
+  - name: tavily_extract
+    description: "Bóc tách nội dung chi tiết từ một hoặc nhiều địa chỉ URL web."
+    parameters:
+      type: object
+      properties:
+        urls:
+          type: array
+          items: {type: string}
+          description: "Danh sách các URL cần đọc nội dung chi tiết"
+      required: [urls]
+
+  - name: site_map
+    description: "Khám phá danh sách các liên kết trang con (sitemap) của một trang web."
+    parameters:
+      type: object
+      properties:
+        url: {type: string, default: "", description: "Địa chỉ trang web gốc"}
+        search: {type: string, description: "Từ khóa lọc liên kết"}
+      required: [url]
+

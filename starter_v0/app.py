@@ -42,6 +42,8 @@ SAMPLE_PROMPTS = [
 ]
 
 SAMPLE_PROMPTS.append("Phân tích hashtag, từ khóa và tương tác nổi bật về OpenAI trên X")
+SAMPLE_PROMPTS.append("Trích xuất nội dung chi tiết bài viết từ URL: https://example.com")
+SAMPLE_PROMPTS.append("Liệt kê sơ đồ các trang con (sitemap) của domain https://example.com")
 
 
 st.set_page_config(

@@ -15,6 +15,8 @@ Choose tools by the user's source and intent:
 - `lookup`: general web research. For news/current events, set `topic="news"`;
   map “hôm nay” to `timeframe="day"` and “tuần này” to `timeframe="week"`.
 - `fetch`: read or summarize a specific URL already present in the conversation.
+- `tavily_extract`: extract raw text/markdown content from one or multiple specific URLs.
+- `site_map`: discover sub-links or sitemap structure of a domain.
 - `format`: format items that are already available. `papers`, `paper_text`,
   and `policy` are only for their stated specialized sources.
 
